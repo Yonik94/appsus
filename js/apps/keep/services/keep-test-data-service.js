@@ -6,9 +6,11 @@ function query() {
     return Promise.resolve(notes)
 };
 
+let noteId = 1
 // Consider adding editedAt key to all notes
 const notes = [
     {
+        noteId: noteId++ ,
         type: 'noteTxt',
         isPinned: false,
         title: 'Important phone numbers',
@@ -22,6 +24,7 @@ const notes = [
         }
     },
     {
+        noteId: noteId++,
         type: 'noteImg',
         isPinned: false,
         title: 'My cat',
@@ -34,6 +37,7 @@ const notes = [
         }
     },
     {
+        noteId: noteId++,
         type: 'noteTodos',
         isPinned: false,
         title: 'Shopping list',

@@ -6,7 +6,7 @@ export default {
     props: ['notes'],
     template:
         `<main>
-    <article v-for="note in notes">
+    <article v-for="note in notes" @click="selectNote(note)">
     <component :is="note.type" :note="note"></component>
     </article>
     </main>`,
@@ -14,5 +14,11 @@ export default {
         noteTxt,
         noteImg,
         noteTodos
+    },
+    methods: {
+        selectNote(note){
+            this.$emit('selectedNote', note)
+            console.log(note.noteId)
+        }
     }
 };
