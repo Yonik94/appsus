@@ -1,38 +1,12 @@
 export const emailTestDataService = {
-    query,
-    queryByFolder,
-    queryByStatus
+    query
 }
 
 function query(byParam = null, state) {
-    if (!byParam) return Promise.resolve(emails);
-
-    switch (byParam) {
-        case 'all':
-            byParam = 'deleted';
-            state = false;
-        case 'deleted': case 'starred':
-            byParam = 'is' + byParam.charAt(0).toUpperCase() + byParam.slice(1);
-            return queryByStatus(byParam, state)
-        default:
-            return queryByFolder(byParam)
-    }
+    return gEmails;
 }
 
-function queryByFolder(folder) {
-    return Promise.resolve(emails.filter(email =>
-        (email.folder === folder && !email.status.isDeleted)));
-}
-
-function queryByStatus(statusType, state = true) {
-    if (statusType === 'isDeleted') return Promise.resolve(emails.filter(email =>
-        email.status.isDeleted === state));
-
-    return Promise.resolve(emails.filter(email =>
-        (email.status[statusType] === state && !email.status.isDeleted)));
-}
-
-const emails = [
+const gEmails = [
     {
         from: 'Assaf-Margalit@gmail.com',
         subject: `Let's get back together`,
