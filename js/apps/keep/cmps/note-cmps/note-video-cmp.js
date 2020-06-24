@@ -1,4 +1,4 @@
-import actionBtns from './action-btns-cmp';
+import actionBtns from './controller-btns-cmp';
 
 export default {
     props: ['title', 'txt', 'videoUrl'],

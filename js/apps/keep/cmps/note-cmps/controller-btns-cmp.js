@@ -1,5 +1,5 @@
 export default {
-    name: 'action-btns',
+    name: 'controller-btns',
     template:
         `<section>
         <button @hover="showColors">Background</button>
