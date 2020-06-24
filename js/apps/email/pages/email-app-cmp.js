@@ -1,4 +1,5 @@
 import { emailTestDataService } from '../services/email-test-data-service.js'
+// Consider decluttering email-folders duplicates using passage of folderType property
 
 export default {
     name: 'email-app',
@@ -10,12 +11,11 @@ export default {
         </main>`,
     data() {
         return {
-            email: null
+            emails: null
         }
     },
     created() {
         emailTestDataService.query()
             .then(emails => this.emails = emails)
-            .then(() => console.log(this.emails));
     },
 };
