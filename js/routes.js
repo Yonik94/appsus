@@ -17,4 +17,4 @@ const routes = [
         },
 ];
 
-export const appRouter = new VueRouter({ routes })
+export const appRouter = new VueRouter({ routes });

@@ -2,10 +2,10 @@ export default {
     name: 'controller-btns',
     template:
         `<section>
-        <button @hover="showColors">Background</button>
-        <button @click="deleteNote">Deletebutton>
-        <button @click="duplicateNote">Duplicate<button>
-        <button @click="forward">Forward to email</button>
+        <button @hover="showColors"> Background </button>
+        <button @click="deleteNote"> Delete </button>
+        <button @click="duplicateNote"> Duplicate </button>
+        <button @click="forward"> Forward to email </button>
     </section>`,
     methods: {
         showColors() {

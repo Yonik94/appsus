@@ -1,14 +1,15 @@
-import actionBtns from './controller-btns-cmp';
+import controllerBtns from './controller-btns-cmp.js';
 
 export default {
-    props: ['title', 'txt'],
+    name: 'note-txt',
+    props: ['note'],
     template:
         `<article>
-        <h4>{{title}}</h4>
-        <p>{{txt}}</p>
-        <action-btns><action-btns>
+        <h4>{{ note.title }}</h4>
+        <p>{{ note.info.txt }}</p>
+        <controller-btns></controller-btns>
     </article>`,
     components: {
-        actionBtns
+        controllerBtns
     }
 };
