@@ -1,9 +1,20 @@
 export const emailTestDataService = {
-    query
+    query,
+    queryByFolder,
+    queryByStatus
 }
 
 function query() {
     return Promise.resolve(emails);
+}
+
+function queryByFolder(folder) {
+    return emails.filter(email => (email.folder === folder && !email.status.isDeleted));
+}
+
+function queryByStatus(statusType, state = true) {
+    if (statusType === 'isDeleted') emails.filter(email => email.status.isDeleted);
+    return emails.filter(email => (email.status[statusType] === state && !email.status.isDeleted));
 }
 
 const emails = [
@@ -17,8 +28,9 @@ const emails = [
         Just let me know!
         
         Best,`,
-        isRead: false,
         sentAt: 1592674200000,
+        folder: 'inbox',
+        status: { isRead: false, isStarred: false, isDeleted: false }
     },
     {
         subject: `I'm voting this November - are you?`,
@@ -36,7 +48,8 @@ const emails = [
         There's nothing like sharing our voice in the democratic process. I hope you join me this November!
         
         All the best,`,
-        isRead: true,
         sentAt: 1592991114,
+        folder: 'inbox',
+        status: { isRead: true, isStarred: false, isDeleted: false }
     },
 ];
