@@ -2,8 +2,9 @@ import home from './pages/home-cmp.js';
 import about from './pages/about-cmp.js';
 import keepApp from './apps/keep/pages/keep-app-cmp.js';
 import emailApp from './apps/email/pages/email-app-cmp.js';
-import inboxList from './apps/email/cmps/email-folder-cmps/inbox-list-cmp.js';
+import emailsList from './apps/email/cmps/emails-list-cmp.js';
 
+// Check if alias with names exists in vue to remove duplicated childrens of emailApp
 const routes = [
         {
                 path: '/',
@@ -18,12 +19,38 @@ const routes = [
                 component: keepApp
         },
         {
-                path: '/email',
+                path: '/email/:folder?',
                 component: emailApp,
                 children: [
                         {
-                                path: '/inbox',
-                                component: inboxList
+                                name: 'inbox',
+                                path: 'inbox',
+                                component: emailsList
+                        },
+                        {
+                                name: 'starred',
+                                path: 'starred',
+                                component: emailsList
+                        },
+                        {
+                                name: 'sent',
+                                path: 'sent',
+                                component: emailsList
+                        },
+                        {
+                                name: 'drafts',
+                                path: 'drafts',
+                                component: emailsList
+                        },
+                        {
+                                name: 'deleted',
+                                path: 'deleted',
+                                component: emailsList
+                        },
+                        {
+                                name: 'all',
+                                path: 'all',
+                                component: emailsList
                         },
                 ]
         },
