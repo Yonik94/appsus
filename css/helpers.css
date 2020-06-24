@@ -12,13 +12,7 @@ select {
   font-family: inherit;
 }
 
-input {
-  outline: none;
-  border: none;
-  font-family: inherit;
-}
-
-textarea {
+input, textarea {
   outline: none;
   font-family: inherit;
 }
