@@ -8,9 +8,9 @@ A multi application platform.
 
 ## Authors
 
-* **Tal Shachar** - *Main Developer* - [PurpleBooth](https://github.com/talshachar)
-* **Yoni Kohn** - *Main Developer* - [PurpleBooth](https://github.com/yonik94)
-* Ori Shemla - *Product Manager* - [PurpleBooth](https://github.com/)
+* **Tal Shachar** - *Main Developer* - [Profile](https://github.com/talshachar)
+* **Yoni Kohn** - *Main Developer* - [Profile](https://github.com/yonik94)
+* Ori Shemla - *Product Manager* - [Profile](https://github.com/)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -20,3 +20,4 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 #### Acknowledgments
 
+* Icons made by [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect), [Freepik](https://www.flaticon.com/authors/freepik) from [Flaticon](https://www.flaticon.com/)
