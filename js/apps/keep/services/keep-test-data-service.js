@@ -1,8 +1,12 @@
-// Consider adding editedAt key to all notes
 export const keepTestDataService = {
     query
 }
 
+function query(){
+    return Promise.resolve(notes)
+}
+
+// Consider adding editedAt key to all notes
 const notes = [
     {
         type: 'noteTxt',
@@ -79,8 +83,4 @@ const notes = [
             backgroundColor: ''
         }
     }
-]
-
-function query(){
-    return Promise.resolve(notes)
-}
+];

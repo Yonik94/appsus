@@ -1,13 +1,15 @@
-import homePage from './pages/home-page-cmp.js';
+import home from './pages/home-cmp.js';
+import about from './pages/about-cmp.js';
 
-const myRoutes = [
+const routes = [
         {
                 path: '/',
-                component: homePage
+                component: home
         },
         {
                 path: '/about',
-                component: aboutUs
+                component: about
         },
-]
-export const myRouter = new VueRouter({ routes: myRoutes })
+];
+
+export const appRouter = new VueRouter({ routes })
