@@ -1,10 +1,11 @@
 import { keepTestDataService } from '../services/keep-test-data-service.js'
-import notesList from '../cmps/notes-list-cmp.js' ;
+import notesList from '../cmps/notes-list-cmp.js';
 
 export default {
     name: 'keep-app',
     template:
         `<main>
+            <input type="text" placeholder="enter your note text"/>
             <notes-list :notes="notes"></notes-list>
         </main>`,
 
@@ -14,11 +15,9 @@ export default {
         }
 
     },
-
     created() {
         keepTestDataService.query()
             .then(notes => this.notes = notes)
-            .then(() => console.log(this.notes))
     },
     components: {
         notesList
