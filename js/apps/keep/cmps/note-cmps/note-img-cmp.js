@@ -1,15 +1,15 @@
-import actionBtns from './controller-btns-cmp';
+import controllerBtns from './controller-btns-cmp.js';
 
 export default {
-    props: ['title', 'txt', 'imgUrl'],
+    props: ['note'],
     template:
-        `<article>
-        <h4>{{title}}</h4>
-        <img src="{{imgUrl}}" alt="">
-        <p>{{txt}}</p>
-        <action-btns><action-btns>
-    </article>`,
+        `<article style="max-width:310px">
+            <h4>{{ note.title }}</h4>
+            <img style="width:100%" :src="note.info.imgUrl" alt="">
+            <p>{{ note.info.txt }}</p>
+            <controller-btns></controller-btns>
+        </article>`,
     components: {
-        actionBtns
+        controllerBtns
     }
 };
