@@ -1,4 +1,4 @@
-import { emailTestDataService } from '../services/email-test-data-service.js'
+import { emailService } from '../services/email-service.js';
 // Consider decluttering email-folders duplicates using passage of folderType property
 
 export default {
@@ -6,7 +6,14 @@ export default {
     template:
         `<main>
             <header>Insert header component here</header>
-            <section>Insert sidebar component here</section>
+            <section>
+                <router-link to="/email/inbox">Inbox</router-link>  
+                <router-link to="/email/starred">Starred</router-link> 
+                <router-link to="/email/sent">Sent</router-link> 
+                <router-link to="/email/drafts">Drafts</router-link> 
+                <router-link to="/email/deleted">Deleted</router-link> 
+                <router-link to="/email/all">All Mail</router-link> 
+            </section>
             <router-view />
         </main>`,
     data() {
@@ -15,7 +22,7 @@ export default {
         }
     },
     created() {
-        emailTestDataService.query()
-            .then(emails => this.emails = emails)
+        emailService.query()
+            .then(emails => this.emails = emails);
     },
 };
