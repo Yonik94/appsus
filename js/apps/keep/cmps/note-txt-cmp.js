@@ -1,14 +1,14 @@
-import actionBtns from './action-btns-cmp'
+import actionBtns from './action-btns-cmp';
 
 export default {
     props: ['title', 'txt'],
     template:
-    `<article>
+        `<article>
         <h4>{{title}}</h4>
         <p>{{txt}}</p>
         <action-btns><action-btns>
     </article>`,
-    components:{
+    components: {
         actionBtns
     }
-}
+};
