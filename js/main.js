@@ -1,4 +1,5 @@
 import { appRouter } from './routes.js';
+import { eventBus } from './services/event-bus-service.js';
 
 new Vue({
     el: "#appsus",

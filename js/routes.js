@@ -31,27 +31,27 @@ const routes = [
                         },
                         {
                                 name: 'starred',
-                                path: 'starred',
+                                path: 'starred/:emailId?',
                                 component: emailsList
                         },
                         {
                                 name: 'sent',
-                                path: 'sent',
+                                path: 'sent/:emailId?',
                                 component: emailsList
                         },
                         {
                                 name: 'drafts',
-                                path: 'drafts',
+                                path: 'drafts/:emailId?',
                                 component: emailsList
                         },
                         {
                                 name: 'deleted',
-                                path: 'deleted',
+                                path: 'deleted/:emailId?',
                                 component: emailsList
                         },
                         {
                                 name: 'all',
-                                path: 'all',
+                                path: 'all/:emailId?',
                                 component: emailsList
                         },
                 ]

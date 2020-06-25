@@ -1,11 +1,11 @@
 import { emailService } from '../services/email-service.js';
 
 export default {
-    props: ['email'], 
+    props: ['email'],
     template:
-    `<li class="flex space-between" :class="{ fw600: !email.status.isRead }" @click="markAsRead(email.emailId)">
+        `<li class="flex space-between" :class="{ fw600: !email.status.isRead }" @click="openEmail(email)">
         <div>{{ from }}</div>
-        <div>{{ email.body }}</div>
+        <div>{{ email.subject }} - {{ email.body }}</div>
         <div>{{ sentAt }}</div>
     </li>`,
     data() {
@@ -14,15 +14,15 @@ export default {
             from: null
         }
     },
-    
+
     created() {
-        // console.log(this.email.from.match(/^.+?(?=@)/g));
-       this.sentAt = emailService.getEmailSentAt(this.email.sentAt)
-       this.from = emailService.getSenderName(this.email.from)
+        this.sentAt = emailService.getEmailSentAt(this.email.sentAt)
+        this.from = emailService.getSenderName(this.email.from)
     },
+
     methods: {
-        markAsRead(emailId) {
-            this.email.status.isRead = true;
+        openEmail(email){
+            emailService.markAsRead(email.emailId)
         }
     }
 }

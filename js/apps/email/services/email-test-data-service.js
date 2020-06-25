@@ -1,13 +1,17 @@
+import { utilsService } from "../../../services/utils-service.js";
+
 export const emailTestDataService = {
     query
 }
 
 function query() {
+    console.log(gEmails)
     return gEmails;
 }
 
 const gEmails = [
     {
+        emailId: utilsService.getRandomId(),
         from: 'Assaf-Margalit@gmail.com',
         subject: `Let's get back together`,
         body:
@@ -27,6 +31,7 @@ const gEmails = [
         }
     },
     {
+        emailId: utilsService.getRandomId(),
         from: 'Arik-Sharon@gmail.com',
         subject: `I'm voting this November - are you?`,
         body:
@@ -52,6 +57,7 @@ const gEmails = [
         }
     },
     {
+        emailId: utilsService.getRandomId(),
         from: 'alsdkslsdkd@gmail.com',
         subject: `erwwerrtret`,
         body:

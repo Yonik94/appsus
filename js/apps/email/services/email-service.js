@@ -6,15 +6,20 @@ export const emailService = {
     queryByFolder,
     queryByStatus,
     getEmailSentAt,
-    getSenderName
+    getSenderName,
+    markAsRead,
+    getEmailById,
+    sendEmail
 }
 
 let gEmails;
 
 function query(byParam = null, state) {
     gEmails = utilsService.getFromStorage('emails');
-    if (!gEmails) gEmails = emailTestDataService.query();
-
+    if (!gEmails) {
+        gEmails = emailTestDataService.query();
+        utilsService.saveToStorage('emails', gEmails)
+    }
     if (!byParam) return Promise.resolve(gEmails);
 
     switch (byParam) {
@@ -58,7 +63,48 @@ function getEmailSentAt(time) {
     }
 }
 
-function getSenderName(str){
-   return str.match(/^.+?(?=@)/g)[0].replace(/-/g, ' ');
+function getSenderName(str) {
+    return str.match(/^.+?(?=@)/g)[0].replace(/-/g, ' ');
 }
 
+function markAsRead(emailId) {
+    const email = getEmailById(emailId)
+        .then(email => {
+            email.status.isRead = true;
+            utilsService.saveToStorage('emails', gEmails)
+        })
+}
+
+function getEmailById(emailId) {
+    return Promise.resolve(gEmails.find(email => email.emailId === emailId))
+}
+
+function createEmail() {
+    const email = {
+        emailId: utilsService.getRandomId(),
+        from: '',
+        subject: ``,
+        body:
+            ``,
+        sentAt: Date.now(),
+        folder: 'sent',
+        status: {
+            isRead: false,
+            isStarred: true,
+            isDeleted: false
+        }
+    }
+    return Promise.resolve(email)
+}
+
+function sendEmail(from, subject, body) {
+    return createEmail()
+        .then(email => {
+            email.from = from
+            email.subject = subject
+            email.body = body
+            gEmails.unshift(email)
+            utilsService.saveToStorage('emails', gEmails)
+            return gEmails
+        })     
+}
