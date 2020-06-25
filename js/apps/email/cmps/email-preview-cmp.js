@@ -1,10 +1,17 @@
 export default {
     props: ['email'], 
     template:
-    `<li>
-        {{email}}
+    `<li class="flex space-between">
+        <div>{{ email.from }}</div>
+        <div>{{ email.body }}</div>
+        <div>{{ email.sentAt }}</div>
     </li>`,
     data() {
-        return {}
+        return {
+
+        }
     },
+    created() {
+        console.log(this.email.from.match('^.+?(?=@)'));
+    }
 }
