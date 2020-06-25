@@ -2,7 +2,7 @@ export default {
     name: 'controller-btns',
     template:
         `<section>
-        <button @hover="showColors"> Background </button>
+        <button @mouseover="showColors"> Background </button>
         <button @click="deleteNote"> Delete </button>
         <button @click="duplicateNote"> Duplicate </button>
         <button @click="forward"> Forward to email </button>
@@ -12,7 +12,7 @@ export default {
             console.log('Background color');
         },
         deleteNote() {
-            console.log('Delete colors');
+            console.log('Delete');
         },
         duplicateNote() {
             console.log('Duplicate');
