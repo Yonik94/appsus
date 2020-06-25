@@ -20,8 +20,8 @@ export default {
         noteTodos
     },
     methods: {
-        selectNote(note){
-            this.$emit('selectedNote', note)
+        selectNote(note) {
+            this.$emit('selectedNote', note);
         }
     }
 }

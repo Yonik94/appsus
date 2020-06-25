@@ -7,29 +7,28 @@ export default {
     props: ['note'],
     template:
         `<article>
-        <h4 contenteditable="true"> {{ note.title }} </h4>
-        <ul>
-        <li v-for="(todo, idx) in note.info.todos" class="clean-list"> 
-        <input contenteditable="false" @click.stop v-model="todo.isDone" type="checkbox">
-                <label @blur="checkString(note)" @input="saveNote(note.noteId, $el, idx, 'txt')" contenteditable="true" :class="{marked: todo.isDone}"> {{ todo.txt }} </label>
+            <h4 contenteditable="true"> {{ note.title }} </h4>
+            <ul>
+            <li v-for="(todo, idx) in note.info.todos" class="clean-list"> 
+            <input v-model="todo.isDone" type="checkbox">
+                <label @input="saveNote(note.noteId, idx, 'txt')" :ref="'todo-' + idx" :class="{marked: todo.isDone}" contenteditable="true">{{ todo.txt }}</label>
                 <button>X</button>
             </li>
             </ul>
-        <controller-btns></controller-btns>
+            <controller-btns></controller-btns>
     </article>`,
     components: {
         controllerBtns
     },
     methods: {
-        saveNote(id, el, idx, editedEl){
-            console.log(el.children[1].children[idx].children[1].innerText)
-            console.log('value', el)
-            keepService.saveNote(id, el, idx, editedEl)
+        saveNote(noteId, idx) {
+            const currEl = this.$refs['todo-' + idx][0];
+            keepService.saveNote(noteId, 'todo-' + idx ,currEl.innerHTML);
+            console.log(currEl, currEl.innerHTML);
         },
 
-        checkString(note){
-
-        }
+        // validateTodoStr(note){
+            // @blur="checkStr(note)"
+        // }
     }
-
 }

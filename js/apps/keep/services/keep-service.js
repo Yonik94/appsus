@@ -1,11 +1,12 @@
-import { keepTestDataService } from './keep-test-data-service.js'
-import { utilsService } from '../../../services/utils-service.js'
+import { keepTestDataService } from './keep-test-data-service.js';
+import { utilsService } from '../../../services/utils-service.js';
 
 export const keepService = {
     query,
-    saveNote,
-    findNoteById
+    queryById,
+    saveNote
 }
+
 // function createNote(type){
 
 // }
@@ -13,23 +14,24 @@ export const keepService = {
 let gNotes;
 
 function query() {
-    gNotes = utilsService.getFromStorage('notes')
+    gNotes = utilsService.getFromStorage('notes');
     if (!gNotes) {
-        gNotes = keepTestDataService.query()
-        utilsService.saveToStorage('notes', gNotes)
+        gNotes = keepTestDataService.query();
+        utilsService.saveToStorage('notes', gNotes);
     }
-        return Promise.resolve(gNotes)
-    }
+    return Promise.resolve(gNotes);
+}
 
-    function findNoteById(id){
-        return Promise.resolve(gNotes.find(note => note.noteId = id))
-    }
+function queryById(noteId) {
+    return Promise.resolve(gNotes.find(note => note.noteId = noteId));
+}
 
-    function saveNote(id, value, idx, editedEl) {
-        const note = gNotes.find(note => note.noteId === id)
-        if(editedEl === 'title') note.title = value
-        else if (editedEl === 'txt'){
-            if (note.type === 'noteTodos') note.info.todos[idx].txt = value
-            else note.info.txt = value;
-        }
-    }
+function saveNote(noteId, editedEl, value, idx) {
+    const note = gNotes.find(note => note.noteId === noteId);
+    console.log(editedEl, note[editedEl]);
+    // note[editedEl] = value
+    // if (editedEl === 'txt') {
+    //     if (note.type === 'noteTodos') note.info.todos[idx].txt = value
+    //     else note.info.txt = value;
+    // }
+}
