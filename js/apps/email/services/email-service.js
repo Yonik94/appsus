@@ -4,7 +4,9 @@ import { emailTestDataService } from './email-test-data-service.js';
 export const emailService = {
     query,
     queryByFolder,
-    queryByStatus
+    queryByStatus,
+    getEmailSentAt,
+    getSenderName
 }
 
 let gEmails;
@@ -39,3 +41,24 @@ function queryByStatus(statusType, state = true) {
     return Promise.resolve(gEmails.filter(email =>
         (email.status[statusType] === state && !email.status.isDeleted)));
 }
+
+function getEmailSentAt(time) {
+    const currTime = Date.now();
+    const calcToHours = 1000 * 60 * 60;
+    const calcToYears = 1000 * 60 * 60 * 24 * 365;
+    const timeDiff = currTime - time;
+
+    if (timeDiff / calcToHours < 24) {
+        return new Date(time).toLocaleTimeString('en-US',
+            { hour: '2-digit', minute: '2-digit', hour12: true });
+    } else if (timeDiff / calcToYears < 1) {
+        return `${new Date(time).getDate()} ${new Date(time).toLocaleString('en-US', { month: 'short' })}`
+    } else {
+        return new Date(time).toLocaleDateString();
+    }
+}
+
+function getSenderName(str){
+   return str.match(/^.+?(?=@)/g)[0].replace(/-/g, ' ');
+}
+

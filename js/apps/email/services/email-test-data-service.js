@@ -18,7 +18,7 @@ const gEmails = [
         Just let me know!
         
         Best,`,
-        sentAt: 1592674200000,
+        sentAt: 1593072558969,
         folder: 'inbox',
         status: {
             isRead: false,
@@ -27,7 +27,7 @@ const gEmails = [
         }
     },
     {
-        from: 'Ariel-Sharon@gmail.com',
+        from: 'Arik-Sharon@gmail.com',
         subject: `I'm voting this November - are you?`,
         body:
             `Hey {{ first_name | fallback: 'there' }},
@@ -43,7 +43,20 @@ const gEmails = [
         There's nothing like sharing our voice in the democratic process. I hope you join me this November!
         
         All the best,`,
-        sentAt: 1592991114,
+        sentAt: 1592991114000,
+        folder: 'drafts',
+        status: {
+            isRead: true,
+            isStarred: false,
+            isDeleted: false
+        }
+    },
+    {
+        from: 'alsdkslsdkd@gmail.com',
+        subject: `erwwerrtret`,
+        body:
+            `Hasdla's;dla's;dl'xcv,/.ds,fsw;l'rkwe';rkweqwesad`,
+        sentAt: 1552991114000,
         folder: 'drafts',
         status: {
             isRead: true,
