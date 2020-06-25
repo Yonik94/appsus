@@ -8,7 +8,7 @@ function query() {
 
 let noteId = 1
 // Consider adding editedAt key to all notes
-const notes = [
+const gNotes = [
     {
         noteId: noteId++ ,
         type: 'noteTxt',

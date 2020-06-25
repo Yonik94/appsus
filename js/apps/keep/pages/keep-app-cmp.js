@@ -1,6 +1,6 @@
 import { keepService } from '../services/keep-service.js'
 import notesList from '../cmps/notes-list-cmp.js';
-import editNote from '../cmps/edit-note-cmp.js';
+import noteEdit from '../cmps/note-edit-cmp.js';
 
 export default {
     name: 'keep-app',
@@ -8,14 +8,13 @@ export default {
         `<main>
             <input type="text" placeholder="enter your note text"/>
             <notes-list :notes="notes" @selectedNote="selectNote"></notes-list>
-            <edit-note :note="selectedNote"
-            :class="{hidden: (selectedNote === false)}"></edit-note>
+            <note-edit :note="currNote"></note-edit>
             </main>`,
 
     data() {
         return {
             notes: null,
-            selectedNote: null
+            currNote: null
         }
 
     },
@@ -25,12 +24,11 @@ export default {
     },
     components: {
         notesList,
-        editNote
+        noteEdit
     },
     methods: {
-        selectNote(selectNote) {
-            this.selectedNote = selectNote
-
+        selectNote(note) {
+            this.currNote = note;
         }
     }
 }
