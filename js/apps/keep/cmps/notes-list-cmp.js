@@ -7,10 +7,13 @@ export default {
     props: ['notes'],
     template:
         `<main>
-    <article v-for="note in notes" @click="selectNote(note)">
-    <component :is="note.type" :note="note"></component>
-    </article>
-    </main>`,
+            <article v-for="note in notes" @click="selectNote(note)">
+                <router-link :to="'/keep/' + note.noteId">
+                    <component :is="note.type" :note="note"></component>
+                </router-link>
+
+            </article>
+        </main>`,
     components: {
         noteTxt,
         noteImg,

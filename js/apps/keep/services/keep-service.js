@@ -3,7 +3,8 @@ import { utilsService } from '../../../services/utils-service.js'
 
 export const keepService = {
     query,
-    saveNote
+    saveNote,
+    findNoteById
 }
 // function createNote(type){
 
@@ -18,6 +19,10 @@ function query() {
         utilsService.saveToStorage('notes', gNotes)
     }
         return Promise.resolve(gNotes)
+    }
+
+    function findNoteById(id){
+        return Promise.resolve(gNotes.find(note => note.noteId = id))
     }
 
     function saveNote(id, value, idx, editedEl) {
