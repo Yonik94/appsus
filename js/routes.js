@@ -4,7 +4,7 @@ import keepApp from './apps/keep/pages/keep-app-cmp.js';
 import emailApp from './apps/email/pages/email-app-cmp.js';
 import emailsList from './apps/email/cmps/emails-list-cmp.js';
 
-// Check if alias with names exists in vue to remove duplicated childrens of emailApp
+// Check if alias with multiple names exists in vue (in order to remove duplicated childrens of emailApp)
 const routes = [
         {
                 path: '/',
@@ -20,11 +20,12 @@ const routes = [
         },
         {
                 path: '/email/:folder?',
+                redirect: { name: 'inbox' },
                 component: emailApp,
                 children: [
                         {
                                 name: 'inbox',
-                                path: 'inbox',
+                                path: 'inbox/:emailId?',
                                 component: emailsList
                         },
                         {

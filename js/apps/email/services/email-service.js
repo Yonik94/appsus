@@ -21,9 +21,9 @@ function query(byParam = null, state) {
             state = false;
         case 'deleted': case 'starred':
             byParam = 'is' + byParam.charAt(0).toUpperCase() + byParam.slice(1);
-            return queryByStatus(byParam, state)
+            return queryByStatus(byParam, state);
         default:
-            return queryByFolder(byParam)
+            return queryByFolder(byParam);
     }
 }
 

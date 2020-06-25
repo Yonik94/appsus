@@ -2,7 +2,7 @@ export const emailTestDataService = {
     query
 }
 
-function query(byParam = null, state) {
+function query() {
     return gEmails;
 }
 
@@ -22,7 +22,7 @@ const gEmails = [
         folder: 'inbox',
         status: {
             isRead: false,
-            isStarred: false,
+            isStarred: true,
             isDeleted: false
         }
     },

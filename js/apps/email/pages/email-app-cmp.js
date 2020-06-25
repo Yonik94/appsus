@@ -25,4 +25,4 @@ export default {
         emailService.query()
             .then(emails => this.emails = emails);
     },
-};
+}
