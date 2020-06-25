@@ -1,4 +1,4 @@
-import { keepTestDataService } from '../services/keep-test-data-service.js'
+import { keepService } from '../services/keep-service.js'
 import notesList from '../cmps/notes-list-cmp.js';
 import editNote from '../cmps/edit-note-cmp.js';
 
@@ -20,7 +20,7 @@ export default {
 
     },
     created() {
-        keepTestDataService.query()
+        keepService.query()
             .then(notes => this.notes = notes)
     },
     components: {
@@ -33,4 +33,4 @@ export default {
 
         }
     }
-};
+}

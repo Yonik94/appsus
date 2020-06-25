@@ -1,10 +1,10 @@
 export const keepTestDataService = {
     query
-};
+}
 
 function query() {
-    return Promise.resolve(notes)
-};
+    return notes
+}
 
 let noteId = 1
 // Consider adding editedAt key to all notes

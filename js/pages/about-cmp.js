@@ -4,4 +4,4 @@ export default {
     `<main>
         <h1 class="center">About</h1>
     </main>`
-};
+}

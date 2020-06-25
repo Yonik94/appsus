@@ -6,4 +6,4 @@ export default {
         <router-link to="/email">Email</router-link>  
         <router-link to="/keep">Keep</router-link> 
     </main>`
-};
+}
