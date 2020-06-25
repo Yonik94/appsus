@@ -1,5 +1,4 @@
 import controllerBtns from './controller-btns-cmp.js';
-
 import { keepService } from '../../services/keep-service.js';
 
 export default {
@@ -7,11 +6,11 @@ export default {
     props: ['note'],
     template:
         `<article>
-            <h4 @blur="saveNote(note.noteId, 'title')" :ref="'title'" contenteditable="true">{{ note.title }}</h4>
+            <h4 @blur="updateNote($event ,'title')" contenteditable="true">{{ note.title }}</h4>
             <ul>
             <li v-for="(todo, idx) in note.info.todos" class="clean-list"> 
-            <input @click.stop v-model="todo.isDone" type="checkbox">
-                <label @blur="saveNote(note.noteId, 'txt', idx)" :ref="'todo-' + idx" :class="{marked: todo.isDone}" contenteditable="true">{{ todo.txt }}</label>
+            <input @input="updateNote" v-model="todo.isDone" type="checkbox">
+                <label @blur="updateNote($event, 'txt', idx)" :class="{marked: todo.isDone}" contenteditable="true">{{ todo.txt }}</label>
                 <button>X</button>
             </li>
             </ul>
@@ -21,13 +20,22 @@ export default {
         controllerBtns
     },
     methods: {
-        saveNote(noteId, elType, idx) {
-            const currEl = (idx >= 0) ? this.$refs['todo-' + idx][0] : this.$refs[elType];
-            keepService.saveNote(noteId, elType, idx, currEl.innerHTML);
-        },
+        updateNote(ev, elType, idx) {
+            if (elType) {
+                const value = ev.target.innerHTML;
+                if (idx >= 0) {
+                    this.note.info.todos[idx].txt = value;
+                    this.validateTodoTxt(value, idx);
+                } else this.note[elType] = value;
 
-        // validateTodoStr(note){
-            // @blur="checkStr(note)"
-        // }
+                keepService.updateNote(this.note);
+            }
+            else {
+                setTimeout(() => keepService.updateNote(this.note), 0);
+            }
+        },
+        validateTodoTxt(txt, idx) {
+            if (txt === '') this.note.info.todos.splice(idx, 1)
+        }
     }
 }
