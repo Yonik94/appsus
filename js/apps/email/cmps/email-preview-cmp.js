@@ -21,7 +21,7 @@ export default {
     },
 
     methods: {
-        openEmail(email){
+        openEmail(email) {
             emailService.markAsRead(email.emailId)
         }
     }
