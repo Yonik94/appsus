@@ -3,7 +3,7 @@ export const keepTestDataService = {
 }
 
 function query() {
-    return notes
+    return gNotes;
 }
 
 let noteId = 1

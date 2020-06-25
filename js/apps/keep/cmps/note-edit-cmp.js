@@ -14,7 +14,7 @@ export default {
         }
     },
     created() {
-        console.log(this.$route.params.noteId);
+        // console.log(this.$route.params.noteId);
     },
     computed: {
         currNoteId() {

@@ -16,7 +16,6 @@ export default {
     },
     
     created() {
-        // console.log(this.email.from.match(/^.+?(?=@)/g));
        this.sentAt = emailService.getEmailSentAt(this.email.sentAt)
        this.from = emailService.getSenderName(this.email.from)
     },
