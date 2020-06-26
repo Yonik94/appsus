@@ -7,6 +7,7 @@ export default {
         </transition>
         <router-link to="/email">Email</router-link>  
         <router-link to="/keep">Keep</router-link> 
+        <router-link to="/about">About</router-link> 
     </main>`,
     data() {
         return {
@@ -14,6 +15,6 @@ export default {
         }
     },
     created() {
-        setTimeout(() => this.pageLoad = true, 300);
+        setTimeout(() => this.pageLoad = true, 0);
     }
 }

@@ -1,5 +1,6 @@
-import controllerBtns from './controller-btns-cmp.js';
 import { keepService } from '../../services/keep-service.js';
+import { eventBus } from '../../../../services/event-bus-service.js';
+import controllerBtns from './controller-btns-cmp.js';
 
 export default {
     name: 'note-todos',
@@ -8,9 +9,9 @@ export default {
         `<article>
             <h4 @blur="updateNote($event ,'title')" contenteditable="true">{{ note.title }}</h4>
             <ul>
-            <li v-for="(todo, idx) in note.info.todos" class="clean-list"> 
-            <input @input="updateNote" v-model="todo.isDone" type="checkbox">
-                <label @blur="updateNote($event, 'txt', idx)" :class="{marked: todo.isDone}" contenteditable="true">{{ todo.txt }}</label>
+            <li v-for="(todo, idx) in note.info.todos" :key="todo.txt" class="clean-list"> 
+            <input v-model="todo.isDone" @input="updateNote" type="checkbox">
+                <label @blur="updateNote($event, 'txt', idx)" :class="{cross: todo.isDone}" contenteditable="true">{{ todo.txt }}</label>
                 <button>X</button>
             </li>
             </ul>
@@ -26,9 +27,14 @@ export default {
                 if (idx >= 0) {
                     this.note.info.todos[idx].txt = value;
                     this.validateTodoTxt(value, idx);
-                } else this.note[elType] = value;
+                } else {
+                    this.note[elType] = value;
+                }
 
-                keepService.updateNote(this.note);
+                keepService.updateNote(this.note)
+                    .then(() => {
+                        eventBus.$emit('updateNotes');
+                    });
             }
             else {
                 setTimeout(() => keepService.updateNote(this.note), 0);

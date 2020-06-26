@@ -83,13 +83,15 @@ input, textarea {
   flex-wrap: wrap-reverse;
 }
 
-/* grid */
+.flex>.grow {
+  flex-grow: 1;
+}
+
+/* displays */
 
 .grid {
   display: grid;
 }
-
-/* inline */
 
 .inline {
   display: inline;
@@ -106,8 +108,6 @@ input, textarea {
 .full-height {
   height: 100%;
 }
-
-/* screener */
 
 .screener {
   position: fixed;
