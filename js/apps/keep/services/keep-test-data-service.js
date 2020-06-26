@@ -1,3 +1,5 @@
+import { utilsService } from "../../../services/utils-service.js";
+
 export const keepTestDataService = {
     query
 }
@@ -6,11 +8,10 @@ function query() {
     return gNotes;
 }
 
-let noteId = 1
 // Consider adding editedAt key to all notes
 const gNotes = [
     {
-        noteId: noteId++ ,
+        noteId: utilsService.getRandomId(),
         type: 'noteTxt',
         isPinned: false,
         title: 'Important phone numbers',
@@ -24,7 +25,7 @@ const gNotes = [
         }
     },
     {
-        noteId: noteId++,
+        noteId: utilsService.getRandomId(),
         type: 'noteImg',
         isPinned: false,
         title: 'My cat',
@@ -37,14 +38,14 @@ const gNotes = [
         }
     },
     {
-        noteId: noteId++,
+        noteId: utilsService.getRandomId(),
         type: 'noteTodos',
         isPinned: false,
         title: 'Shopping list',
         info: {
             todos: [
                 {
-                    txt: 'cucambers',
+                    txt: 'cucumbers',
                     isDone: false,
                 },
                 {
@@ -61,18 +62,20 @@ const gNotes = [
             backgroundColor: 'yellow'
         },
     },
+    {
+        noteId: utilsService.getRandomId(),
+        type: 'noteVideo',
+        isPinned: false,
+        title: '',
+        info: {
+            videoUrl: 'https://www.youtube.com/embed/Mus_vwhTCq0'
+        },
+        style: {
+            backgroundColor: 'black'
+        }
+    },
     // {
-    //     type: 'noteVideo',
-    //     isPinned: false,
-    //     title: '',
-    //     info: {
-    //         videoUrl: '',
-    //     },
-    //     style: {
-    //         backgroundColor: ''
-    //     }
-    // },
-    // {
+    //     noteId: utilsService.getRandomId(),
     //     type: 'noteAudio',
     //     isPinned: false,
     //     title: '',
@@ -84,6 +87,7 @@ const gNotes = [
     //     }
     // },
     // {
+    //     noteId: utilsService.getRandomId(),
     //     type: 'noteMap',
     //     isPinned: false,
     //     title: '',

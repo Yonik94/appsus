@@ -1,15 +1,14 @@
-import actionBtns from './controller-btns-cmp';
+import controllerBtns from './controller-btns-cmp.js';
 
 export default {
-    props: ['title', 'txt', 'videoUrl'],
+    props: ['note'],
     template:
         `<article>
-        <h4>{{title}}</h4>
-        <iframe src="{{videoUrl}}" frameborder="0"></iframe>
-        <p>{{txt}}</p>
-        <action-btns><action-btns>
-    </article>`,
+        <h4>{{ note.title }}</h4>
+        <iframe :src="note.info.videoUrl" frameborder="0"></iframe>
+        <controller-btns></controller-btns>
+        </article>`,
     components: {
-        actionBtns
+        controllerBtns
     }
 }

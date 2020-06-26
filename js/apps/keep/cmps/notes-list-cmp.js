@@ -1,9 +1,7 @@
 import noteTxt from './note-cmps/note-txt-cmp.js';
 import noteImg from './note-cmps/note-img-cmp.js';
 import noteTodos from './note-cmps/note-todos-cmp.js';
-
-/* <router-link :to="'/keep/' + note.noteId">
-</router-link> */
+import noteVideo from './note-cmps/note-video-cmp.js';
 
 export default {
     name: 'notes-list',
@@ -17,11 +15,12 @@ export default {
     components: {
         noteTxt,
         noteImg,
-        noteTodos
+        noteTodos,
+        noteVideo
     },
     methods: {
         selectNote(note) {
-            console.log(note.noteId);
+            console.log({ noteId: note.noteId }); // To Delete
             this.$emit('selectedNote', note);
         }
     }

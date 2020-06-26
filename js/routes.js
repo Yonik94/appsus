@@ -1,7 +1,6 @@
 import home from './pages/home-cmp.js';
 import about from './pages/about-cmp.js';
 import keepApp from './apps/keep/pages/keep-app-cmp.js';
-import editNote from './apps/keep/cmps/note-edit-cmp.js';
 import emailApp from './apps/email/pages/email-app-cmp.js';
 import emailsList from './apps/email/cmps/emails-list-cmp.js';
 
