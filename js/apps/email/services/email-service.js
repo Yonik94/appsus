@@ -9,7 +9,9 @@ export const emailService = {
     getSenderName,
     markAsRead,
     getEmailById,
-    sendEmail
+    sendEmail,
+    createDraft,
+    saveToDraft
 }
 
 let gEmails;
@@ -79,32 +81,65 @@ function getEmailById(emailId) {
     return Promise.resolve(gEmails.find(email => email.emailId === emailId))
 }
 
-function createEmail() {
+function createEmail(folder = 'sent') {
     const email = {
         emailId: utilsService.getRandomId(),
         from: '',
+        to: '',
         subject: ``,
         body:
             ``,
         sentAt: Date.now(),
-        folder: 'sent',
+        folder: folder,
         status: {
             isRead: false,
-            isStarred: true,
+            isStarred: false,
             isDeleted: false
         }
     }
     return Promise.resolve(email)
 }
 
-function sendEmail(from, subject, body) {
+function sendEmail(email) {
     return createEmail()
-        .then(email => {
-            email.from = from
-            email.subject = subject
-            email.body = body
-            gEmails.unshift(email)
+        .then(currEmail => {
+            currEmail.from = email.from
+            currEmail.to = email.to
+            currEmail.subject = email.subject
+            currEmail.body = email.body
+            gEmails.unshift(currEmail)
+            if (email.to === 'me@gmail.com'){
+                console.log('email to me')
+                createEmail('inbox')
+                .then(currEmailCopy => {
+                    currEmailCopy.from = email.from
+                    currEmailCopy.to = email.to
+                    currEmailCopy.subject = email.subject
+                    currEmailCopy.body = email.body
+                    gEmails.unshift(currEmailCopy)
+                    utilsService.saveToStorage('emails', gEmails)
+                })
+            } 
             utilsService.saveToStorage('emails', gEmails)
-            return gEmails
         })     
+}
+
+function createDraft(){
+    return createEmail('drafts')
+    .then(email => {
+        gEmails.unshift(email)
+        utilsService.saveToStorage('emails', gEmails)
+        return email.emailId
+    })
+
+}
+
+function saveToDraft(info, emailId){
+    getEmailById(emailId)
+    .then(email => {
+        email.from = info.from
+        email.to = info.to
+        email.subject = info.subject
+        email.body = info.body
+    })
 }

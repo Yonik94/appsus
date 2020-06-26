@@ -5,7 +5,6 @@ export const emailTestDataService = {
 }
 
 function query() {
-    console.log(gEmails)
     return gEmails;
 }
 
@@ -15,7 +14,7 @@ const gEmails = [
         from: 'Assaf-Margalit@gmail.com',
         subject: `Let's get back together`,
         body:
-            `Hey {{ first_name | fallback: "Bae" }},
+            `Hey babe,
         
         I just wanted to let you know that I’ve been thinking about you lately and I realized that I made a terrible mistake. Do you have time this week for us to meet up? I want to see if it’s possible for us to get back together.
         
@@ -35,7 +34,7 @@ const gEmails = [
         from: 'Arik-Sharon@gmail.com',
         subject: `I'm voting this November - are you?`,
         body:
-            `Hey {{ first_name | fallback: 'there' }},
+            `Hey,
 
         Hope you're well. As you know, we have a big day coming up on Tuesday, November 8th! No, not my birthday, it's Election Day!
         

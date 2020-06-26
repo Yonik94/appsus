@@ -6,39 +6,49 @@ export default {
     name: 'email-compose',
     template:
         `<section>
-        <input type="email" placeholder="To:"></input>
-        <input @input="updateEmailSubject()" type="text" placeholder="Subject" :ref="'subject'"></input>
-        <textarea @input="updateEmailBody($el.value)" name="body" id="" cols="30" rows="10" placeholder="Enter your email body" :ref="'body'">
+        <input @input="saveToDraft" v-model="emailTo" type="email" placeholder="To:"></input>
+        <input @input="saveToDraft" v-model="emailSubject" type="text" placeholder="Subject"></input>
+        <textarea @input="saveToDraft" v-model="emailBody" name="body" id="" cols="30" rows="10" placeholder="Enter your email body">
         </textarea>
         <button @click="sendEmail()">Send</button>
     </section>`,
 
     data() {
         return {
+            emailTo: '',
             emailSubject: '',
-            emailBody: ''
+            emailBody: '',
+            emailId: null
         }
     },
 
     methods: {
-        updateEmailSubject() {
-            const currEl = this.$refs['subject']
-            this.emailSubject = currEl.value
-        },
-
-        updateEmailBody() {
-            const currEl = this.$refs['body']
-            this.emailBody = currEl.value
-        },
-
         sendEmail() {
-            emailService.sendEmail('me@gmail.com', this.emailSubject, this.emailBody)
-                .then(emails => {
-                    this.$emit('closeCompose')
-                    eventBus.$emit('emailSent', emails)
-                })
-
+            const email = {
+                from: 'me@gmail.com',
+                to: this.emailTo,
+                subject: this.emailSubject,
+                body: this.emailBody
+            }
+            emailService.sendEmail(email)
+                .then(() => {
+                    this.$emit('closeCompose');
+                    eventBus.$emit('emailSent');
+                });
+        },
+        saveToDraft(){
+            const email = {
+                from: 'me@gmail.com',
+                to: this.emailTo,
+                subject: this.emailSubject,
+                body: this.emailBody
+            }
+            emailService.saveToDraft(email, this.emailId)
         }
     },
+    created() {
+        emailService.createDraft()
+        .then(draftId => this.emailId = draftId)
+    }
 
 }

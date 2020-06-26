@@ -18,12 +18,12 @@ export default {
     template:
         `<main>
             <header>Insert header component here</header>
-            <email-side-nav @openCompose="composeState(false)"></email-side-nav>
+            <email-side-nav @openCompose="composeState(true)"></email-side-nav>
             <router-view />
-            <email-compose @closeCompose="composeState(true)" :class="{hidden: composeClass}"></email-compose>
+            <email-compose @closeCompose="composeState(false)" v-if="composeOpen"></email-compose>
         </main>`,
         data() {
-            return { composeClass: true }
+            return { composeOpen: false }
         },
 
     components: {
@@ -33,7 +33,7 @@ export default {
 
     methods:{
         composeState(state){
-            this.composeClass = state;
+            this.composeOpen = state;
         }
     }
 }
