@@ -9,7 +9,13 @@ import { eventBus } from '../../../services/event-bus-service.js';
 export default {
     name: 'emails-list',
     template:
-        `<main>
+        `<main class="emails-list flex column">
+            <input @input="onSearch()" :ref="'search'" type="text" placeholder="Search"/>
+            <select @change="filterEmails" :ref="'filterEmails'">
+                <option value="all">All</option>
+                <option value="isRead:false">Unread</option>
+                <option value="isRead:true">Read</option>
+            </select>
             <ul v-if="!emailId || $route.name === 'drafts'">
                 <router-link v-for="(email, idx) in emails" :key="idx" :to="$route.name + '/' + email.emailId">
                     <email-preview :email="email"></email-preview>
@@ -43,6 +49,18 @@ export default {
         updateEmails() {
             this.emails = emailService.query(this.$route.name)
                 .then(emails => this.emails = emails);
+        },
+        filterEmails() {
+            if (this.$refs['filterEmails'].value === 'all') return;
+            
+            const byStatus = (this.$refs['filterEmails'].value.split(':'));            
+            
+            this.emails = emailService.query(this.$route.name, JSON.parse(byStatus[1]), byStatus[0])
+                .then(emails => this.emails = emails);
+        },
+        onSearch(){
+            emailService.getEmails(this.$refs.search.value)
+            .then(emails => this.emails = emails)
         }
     },
     components: {

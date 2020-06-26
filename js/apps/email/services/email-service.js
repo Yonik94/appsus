@@ -11,7 +11,9 @@ export const emailService = {
     getEmailById,
     sendEmail,
     createDraft,
-    updateDraft
+    updateDraft,
+    deleteEmail,
+    getEmails
 }
 
 let gEmails;
@@ -20,7 +22,7 @@ function query(byParam = null, state) {
     gEmails = utilsService.getFromStorage('emails');
     if (!gEmails) {
         gEmails = emailTestDataService.query();
-        utilsService.saveToStorage('emails', gEmails)
+        utilsService.saveToStorage('emails', gEmails);
     }
     if (!byParam) return Promise.resolve(gEmails);
 
@@ -66,6 +68,7 @@ function getEmailSentAt(time) {
 }
 
 function getSenderName(str) {
+    if (!str) return;
     return str.match(/^.+?(?=@)/g)[0].replace(/-/g, ' ');
 }
 
@@ -73,12 +76,12 @@ function markAsRead(emailId) {
     const email = getEmailById(emailId)
         .then(email => {
             email.status.isRead = true;
-            utilsService.saveToStorage('emails', gEmails)
-        })
+            utilsService.saveToStorage('emails', gEmails);
+        });
 }
 
 function getEmailById(emailId) {
-    return Promise.resolve(gEmails.find(email => email.emailId === emailId))
+    return Promise.resolve(gEmails.find(email => email.emailId === emailId));
 }
 
 function createEmail(folder = 'sent') {
@@ -97,7 +100,7 @@ function createEmail(folder = 'sent') {
             isDeleted: false
         }
     }
-    return Promise.resolve(email)
+    return Promise.resolve(email);
 }
 
 function sendEmail(emailId) {
@@ -115,19 +118,19 @@ function sendEmail(emailId) {
                         currEmail.body = email.body;
                         gEmails.unshift(currEmail);
                         utilsService.saveToStorage('emails', gEmails);
-                    })
+                    });
             }
-        })
+        });
 }
 
 
 function createDraft() {
     return createEmail('drafts')
         .then(email => {
-            gEmails.unshift(email)
-            utilsService.saveToStorage('emails', gEmails)
-            return email.emailId
-        })
+            gEmails.unshift(email);
+            utilsService.saveToStorage('emails', gEmails);
+            return email.emailId;
+        });
 
 }
 
@@ -135,10 +138,28 @@ function updateDraft(info, emailId) {
     if (info.subject === '') info.subject = '(no-subject)';
     return getEmailById(emailId)
         .then(email => {
-            email.from = info.from
-            email.to = info.to
-            email.subject = info.subject
-            email.body = info.body
-            utilsService.saveToStorage('emails', gEmails)
-        })
+            email.from = info.from;
+            email.to = info.to;
+            email.subject = info.subject;
+            email.body = info.body;
+            utilsService.saveToStorage('emails', gEmails);
+        });
+}
+
+function deleteEmail(emailId) {
+    return Promise.resolve(gEmails.findIndex(email => email.emailId === emailId))
+        .then(idx => {
+            console.log(idx);
+            gEmails.splice(idx, 1);
+            utilsService.saveToStorage('emails', gEmails);
+        });
+}
+
+function getEmails(ByText) {
+    const emailsByText = gEmails.filter(email => {
+       return (email.subject.toLowerCase().includes(ByText.toLowerCase())
+       || email.body.toLowerCase().includes(ByText.toLowerCase())
+       || email.from.toLowerCase().includes(ByText.toLowerCase()))
+    })
+    return Promise.resolve(emailsByText)
 }

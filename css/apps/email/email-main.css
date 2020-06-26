@@ -1,0 +1,10 @@
+@import '../email/cmps/email-app-cmp.css';
+@import '../email/cmps/email-list-cmp.css';
+@import '../email/cmps/email-list-cmp.css';
+@import '../email/cmps/email-preview-cmp.css';
+@import '../email/cmps/email-side-nav-cmp.css';
+/* BASE */
+a {
+    text-decoration: none;
+    color: unset;
+}

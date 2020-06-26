@@ -1,5 +1,4 @@
 
-
 import { emailService } from '../services/email-service.js';
 import { eventBus } from '../../../services/event-bus-service.js';
 export default {
@@ -26,10 +25,15 @@ export default {
 
     methods: {
         sendEmail() {
+            if (this.emailTo === '' && this.emailSubject === '' && this.emailBody === '') {
+                emailService.deleteEmail(this.emailId)
+                .then(() => this.closeDraft());
+                return;
+            }
             const email = this.createEmailDetails()
             emailService.sendEmail(this.emailId)
                 .then(() => {
-                    this.closeDraft()
+                    this.closeDraft();
                 });
         },
         createDraft() {
@@ -37,23 +41,27 @@ export default {
                 .then(draftId => this.emailId = draftId);
         },
         updateDraft() {
-            const email = this.createEmailDetails()
-            console.log(email)
+            const email = this.createEmailDetails();
             emailService.updateDraft(email, this.emailId)
                 .then(() => this.updateEmails());
         },
         updateEmails() {
+            console.log('update')
             eventBus.$emit('updateEmails');
         },
         closeDraft() {
-            eventBus.$emit('closeDraft')
+            if (this.emailTo === '' && this.emailSubject === '' && this.emailBody === '') {
+                emailService.deleteEmail(this.emailId)
+                .then(() => this.updateEmails())
+            }
+            eventBus.$emit('closeDraft');
             this.updateEmails();
-            this.emailTo = ''
-            this.emailSubject = ''
-            this.emailBody = ''
-            this.emailId = null
+            this.emailTo = '';
+            this.emailSubject = '';
+            this.emailBody = '';
+            this.emailId = null;
         },
-        createEmailDetails(){
+        createEmailDetails() {
             return {
                 from: 'me@gmail.com',
                 to: this.emailTo,
@@ -64,7 +72,7 @@ export default {
     },
     created() {
         eventBus.$on('composeEmail', () => {
-            this.createDraft()
-        })
+            this.createDraft();
+        });
     }
 }

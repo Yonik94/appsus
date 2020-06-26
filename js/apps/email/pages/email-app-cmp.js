@@ -17,21 +17,23 @@ import { eventBus } from '../../../services/event-bus-service.js';
 export default {
     name: 'email-app',
     template:
-        `<main>
+        `<main class="flex column">
             <header>Insert header component here</header>
-            <email-side-nav></email-side-nav>
-            <router-view />
-            <email-compose v-show="isDraftOpen" :open="isDraftOpen"></email-compose>
+            <section class="flex">
+                <email-side-nav></email-side-nav>
+                <router-view />
+                <email-compose v-show="isDraftOpen" :open="isDraftOpen"></email-compose>
+            </section>
         </main>`,
-        data() {
-            return { isDraftOpen: false }
-        },
+    data() {
+        return { isDraftOpen: false }
+    },
 
     components: {
         emailCompose,
         emailSideNav
     },
-    created(){
+    created() {
         eventBus.$on('composeEmail', () => {
             this.toggleCompose(true)
         });
@@ -39,8 +41,8 @@ export default {
             this.toggleCompose(false)
         });
     },
-    methods:{
-        toggleCompose(state){
+    methods: {
+        toggleCompose(state) {
             this.isDraftOpen = state;
         },
     }

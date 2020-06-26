@@ -1,0 +1,13 @@
+.emails-list .email-from{
+    flex-basis: 10%;
+}
+.emails-list .email-subject{
+    flex-basis: 75%;
+}
+.emails-list .email-sent-at{
+    flex-basis: 10%;
+}
+.emails-list select{
+    max-width: 100px ;
+    margin-bottom: 20px;
+}
