@@ -4,9 +4,10 @@
 // then the email-app will update it's emails liist and update the component email-list
 // the it should rerender the lists
 
-import { emailService } from '../services/email-service.js';
+// import { emailService } from '../services/email-service.js';
 import emailCompose from '../cmps/email-compose-cmp.js';
 import emailSideNav from '../cmps/side-nav-cmp.js';
+import { eventBus } from '../../../services/event-bus-service.js';
 
 // Consider decluttering email-folders duplicates using passage of folderType property
 
@@ -18,22 +19,29 @@ export default {
     template:
         `<main>
             <header>Insert header component here</header>
-            <email-side-nav @openCompose="composeState(true)"></email-side-nav>
+            <email-side-nav></email-side-nav>
             <router-view />
-            <email-compose @closeCompose="composeState(false)" v-if="composeOpen"></email-compose>
+            <email-compose v-show="isDraftOpen" :open="isDraftOpen"></email-compose>
         </main>`,
         data() {
-            return { composeOpen: false }
+            return { isDraftOpen: false }
         },
 
     components: {
         emailCompose,
         emailSideNav
     },
-
+    created(){
+        eventBus.$on('composeEmail', () => {
+            this.toggleCompose(true)
+        });
+        eventBus.$on('closeDraft', () => {
+            this.toggleCompose(false)
+        });
+    },
     methods:{
-        composeState(state){
-            this.composeOpen = state;
-        }
+        toggleCompose(state){
+            this.isDraftOpen = state;
+        },
     }
 }

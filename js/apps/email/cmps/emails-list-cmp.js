@@ -10,13 +10,13 @@ export default {
     name: 'emails-list',
     template:
         `<main>
-            <ul v-if="!emailId && $route.name !== 'drafts'">
+            <ul v-if="!emailId || $route.name === 'drafts'">
                 <router-link v-for="(email, idx) in emails" :key="idx" :to="$route.name + '/' + email.emailId">
                     <email-preview :email="email"></email-preview>
                 </router-link>
             </ul>
-            <email-compose v-else-if="$route.name === 'drafts'" :emailId="emailId"></email-compose>
-            <email-details v-else :emailId="emailId"></email-details>
+            <email-details v-else-if="emailId" :emailId="emailId"></email-details>
+            <email-compose v-if="emailId && $route.name === 'drafts'" :emailId="emailId"></email-compose>
             </main>`,
     data() {
         return {
@@ -25,11 +25,12 @@ export default {
         }
     },
     created() {
-        eventBus.$on('emailSent', () => {
-            this.updateEmails() })
+        eventBus.$on('updateEmails', () => {
+            this.updateEmails()
+        })
         this.emailId = this.$route.params.emailId;
         emailService.query(this.$route.name)
-            .then(emails => this.emails = emails) 
+            .then(emails => this.emails = emails);
     },
     watch: {
         '$route'(to, from) {
@@ -39,9 +40,9 @@ export default {
         }
     },
     methods: {
-        updateEmails(){
+        updateEmails() {
             this.emails = emailService.query(this.$route.name)
-            .then(emails => this.emails = emails);
+                .then(emails => this.emails = emails);
         }
     },
     components: {

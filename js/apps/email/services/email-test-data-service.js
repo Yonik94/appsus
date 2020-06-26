@@ -48,7 +48,7 @@ const gEmails = [
         
         All the best,`,
         sentAt: 1592991114000,
-        folder: 'drafts',
+        folder: 'inbox',
         status: {
             isRead: true,
             isStarred: false,
@@ -62,7 +62,7 @@ const gEmails = [
         body:
             `Hasdla's;dla's;dl'xcv,/.ds,fsw;l'rkwe';rkweqwesad`,
         sentAt: 1552991114000,
-        folder: 'drafts',
+        folder: 'inbox',
         status: {
             isRead: true,
             isStarred: false,

@@ -11,7 +11,7 @@ export const emailService = {
     getEmailById,
     sendEmail,
     createDraft,
-    saveToDraft
+    updateDraft
 }
 
 let gEmails;
@@ -43,7 +43,7 @@ function queryByFolder(folder) {
 
 function queryByStatus(statusType, state = true) {
     if (statusType === 'isDeleted') return Promise.resolve(gEmails.filter(email =>
-        email.status.isDeleted === state));
+        email.status.isDeleted === state && email.folder !== 'drafts'));
 
     return Promise.resolve(gEmails.filter(email =>
         (email.status[statusType] === state && !email.status.isDeleted)));
@@ -86,7 +86,7 @@ function createEmail(folder = 'sent') {
         emailId: utilsService.getRandomId(),
         from: '',
         to: '',
-        subject: ``,
+        subject: `(no-subject)`,
         body:
             ``,
         sentAt: Date.now(),
@@ -100,46 +100,45 @@ function createEmail(folder = 'sent') {
     return Promise.resolve(email)
 }
 
-function sendEmail(email) {
-    return createEmail()
-        .then(currEmail => {
-            currEmail.from = email.from
-            currEmail.to = email.to
-            currEmail.subject = email.subject
-            currEmail.body = email.body
-            gEmails.unshift(currEmail)
-            if (email.to === 'me@gmail.com'){
-                console.log('email to me')
+function sendEmail(emailId) {
+    return getEmailById(emailId)
+        .then(email => {
+            console.log(email)
+            email.folder = 'sent';
+            utilsService.saveToStorage('emails', gEmails);
+            if (email.to === 'me@gmail.com') {
                 createEmail('inbox')
-                .then(currEmailCopy => {
-                    currEmailCopy.from = email.from
-                    currEmailCopy.to = email.to
-                    currEmailCopy.subject = email.subject
-                    currEmailCopy.body = email.body
-                    gEmails.unshift(currEmailCopy)
-                    utilsService.saveToStorage('emails', gEmails)
-                })
-            } 
-            utilsService.saveToStorage('emails', gEmails)
-        })     
+                    .then(currEmail => {
+                        currEmail.from = email.from;
+                        currEmail.to = email.to;
+                        currEmail.subject = email.subject;
+                        currEmail.body = email.body;
+                        gEmails.unshift(currEmail);
+                        utilsService.saveToStorage('emails', gEmails);
+                    })
+            }
+        })
 }
 
-function createDraft(){
+
+function createDraft() {
     return createEmail('drafts')
-    .then(email => {
-        gEmails.unshift(email)
-        utilsService.saveToStorage('emails', gEmails)
-        return email.emailId
-    })
+        .then(email => {
+            gEmails.unshift(email)
+            utilsService.saveToStorage('emails', gEmails)
+            return email.emailId
+        })
 
 }
 
-function saveToDraft(info, emailId){
-    getEmailById(emailId)
-    .then(email => {
-        email.from = info.from
-        email.to = info.to
-        email.subject = info.subject
-        email.body = info.body
-    })
+function updateDraft(info, emailId) {
+    if (info.subject === '') info.subject = '(no-subject)';
+    return getEmailById(emailId)
+        .then(email => {
+            email.from = info.from
+            email.to = info.to
+            email.subject = info.subject
+            email.body = info.body
+            utilsService.saveToStorage('emails', gEmails)
+        })
 }

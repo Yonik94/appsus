@@ -13,6 +13,6 @@ export default {
     },
     created(){
         emailService.getEmailById(this.emailId)
-        .then(email => this.email = email)
+        .then(email => this.email = email);
     }
 }

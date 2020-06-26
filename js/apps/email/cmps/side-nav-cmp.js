@@ -1,3 +1,5 @@
+import { eventBus } from '../../../services/event-bus-service.js';
+
 export default {
     name: 'side-nav',
     template:
@@ -10,9 +12,21 @@ export default {
         <router-link to="/email/deleted">Deleted</router-link> 
         <router-link to="/email/all">All Mail</router-link> 
     </nav>`,
+    data(){
+        return {
+            isDraftOpen: false
+        }
+    },
     methods:{
         composeEmail(){
-            this.$emit('openCompose')
+            if (this.isDraftOpen) return
+            eventBus.$emit('composeEmail')
+            this.isDraftOpen = true
         }
+    },
+    created(){
+        eventBus.$on('closeDraft', () => {
+            this.isDraftOpen = false;            
+        })
     }
 }
