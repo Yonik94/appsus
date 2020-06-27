@@ -20,6 +20,10 @@ export default {
             <input v-model="todo.isDone" @input="updateNote" type="checkbox">
                 <label :tabindex="idx" @blur="updateNote($event, 'txt', idx)" :class="{cross: todo.isDone}"
                     @keydown.enter.prevent="splitTodoLine($event, idx)" contenteditable="true" tabindex="idx">{{ todo.txt }}</label>
+
+                    <button v-if="idx !== 0" @click="moveTodoLine(idx, -1)"><i class="fas fa-chevron-up"></i></button>
+                    <button v-if="idx !== note.info.todos.length - 1" @click="moveTodoLine(idx, 1)"><i class="fas fa-chevron-down"></i></button>
+
                 <button @click="deleteTodoLine(idx)"><i class="fas fa-times"></i></button>
             </li>
         </ul>
@@ -87,8 +91,16 @@ export default {
 
             setTimeout(() => ev.target.parentElement.nextElementSibling.children[1].focus(), 0)
         },
+        moveTodoLine(idx, diff) {
+            var currTodoLine = this.note.info.todos[idx];
+            var nextTodoLine = this.note.info.todos[idx + diff];
+            this.note.info.todos[idx] = nextTodoLine;
+            this.note.info.todos[idx + diff] = currTodoLine;
+
+            this.$emit('updateNote', this.note);
+        },
         deleteNote() {
-            
+            this.$emit('deleteNote', this.note.noteId)
         }
     }
 }

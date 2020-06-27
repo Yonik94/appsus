@@ -12,7 +12,6 @@ export default {
             console.log('Background color');
         },
         deleteNote() {
-            console.log('Delete');
             this.$emit('deleteNote');
         },
         duplicateNote() {

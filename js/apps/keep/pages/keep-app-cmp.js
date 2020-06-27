@@ -1,13 +1,15 @@
 import { keepService } from '../services/keep-service.js'
 import { eventBus } from '../../../services/event-bus-service.js'
 import notesList from '../cmps/notes-list-cmp.js';
+import noteCreate from '../cmps/note-create-cmp.js';
 
 export default {
     name: 'keep-app',
     template:
         `<main class="keep-app">
-            <input type="text" placeholder="enter your note text"/>
-            <notes-list @updateNote="updateNote" :notes="notes" @selectedNote="selectNote"></notes-list>
+            <note-create @createNote="createNote"></note-create>
+            <notes-list :notes="notes" @updateNote="updateNote" @deleteNote="deleteNote"
+                @selectedNote="selectNote"></notes-list>
             </main>`,
 
     data() {
@@ -27,11 +29,17 @@ export default {
         });
     },
     components: {
-        notesList
+        notesList,
+        noteCreate
     },
     methods: {
         selectNote(note) {
             this.currNote = note;
+        },
+        createNote(noteType, inputVal) {
+            console.log(this.noteType, this.inputVal)
+            keepService.createNote(noteType, inputVal)
+                .then(notes => { this.notes = notes });
         },
         updateNote(note) {
             keepService.updateNote(note)
@@ -47,6 +55,10 @@ export default {
                 document.head.removeChild(oldLink);
             }
             document.head.appendChild(link);
+        },
+        deleteNote(noteId) {
+            keepService.deleteNote(noteId)
+                .then(notes => { this.notes = notes });
         }
     }
 }
