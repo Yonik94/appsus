@@ -1,0 +1,16 @@
+[contentEditable='true'] {
+  cursor: text;
+  outline: none;
+}
+
+[contentEditable='true']:empty:not(:focus):before {
+  content: attr(data-ph);
+  color: #aaa;
+  font-weight: 300;
+}
+
+li.active > [contentEditable='true']:focus {
+  
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+}

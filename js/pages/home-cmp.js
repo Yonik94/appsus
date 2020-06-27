@@ -1,13 +1,15 @@
 export default {
     name: 'home',
     template:
-    `<main>
+    `<main class="home-container full-height flex column justify-center align-center">
         <transition name="slide-fade">
-            <h2 v-if="pageLoad" class="center">Appsus</h2>
+            <h2 v-show="pageLoad" class="logo">Appsus</h2>
         </transition>
-        <router-link to="/email">Email</router-link>  
-        <router-link to="/keep">Keep</router-link> 
-        <router-link to="/about">About</router-link> 
+        <div class="flex justify-center">
+            <router-link to="/email">Email</router-link>  
+            <router-link to="/keep">Keep</router-link> 
+            <router-link to="/about">About</router-link> 
+        </div>
     </main>`,
     data() {
         return {
@@ -15,6 +17,6 @@ export default {
         }
     },
     created() {
-        setTimeout(() => this.pageLoad = true, 0);
+        setTimeout(() => this.pageLoad = true, 500);
     }
 }

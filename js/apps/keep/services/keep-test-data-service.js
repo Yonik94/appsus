@@ -47,14 +47,17 @@ const gNotes = [
                 {
                     txt: 'cucumbers',
                     isDone: false,
+                    todoId: utilsService.getRandomId()
                 },
                 {
                     txt: 'tomatoes',
-                    isDone: false
+                    isDone: false,
+                    todoId: utilsService.getRandomId()
                 },
                 {
                     txt: 'cheese',
-                    isDone: true
+                    isDone: true,
+                    todoId: utilsService.getRandomId()
                 }
             ]
         },
@@ -72,6 +75,19 @@ const gNotes = [
         },
         style: {
             backgroundColor: 'black'
+        }
+    },
+    {
+        noteId: utilsService.getRandomId(),
+        type: 'noteImg',
+        isPinned: false,
+        title: 'Which came first?',
+        info: {
+            imgUrl: 'https://img.devrant.com/devrant/rant/r_1827681_trQrG.jpg',
+            txt: `Solved.`
+        },
+        style: {
+            backgroundColor: 'pink'
         }
     },
     // {

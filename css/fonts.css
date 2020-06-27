@@ -1,16 +1,21 @@
 @font-face {
-    font-family: 'Source Sans Pro';
-    src: url(../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf);
+    font-family: 'Spartan';
+    src: url(../fonts/Spartan/Spartan-Thin.ttf);
 }
 
 @font-face {
-    font-family: 'Source Sans Pro';
-    src: url(../fonts/Source_Sans_Pro/SourceSansPro-Light.ttf);
-    font-weight: 300;
+    font-family: 'Roboto';
+    src: url(../fonts/Roboto/Roboto-Regular.ttf);
 }
 
 @font-face {
-    font-family: 'Source Sans Pro';
-    src: url(../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf);
-    font-weight: 600;
+    font-family: 'Roboto';
+    src: url(../fonts/Roboto/Roboto-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(../fonts/Roboto/Roboto-Bold.ttf);
+    font-weight: 700;
 }

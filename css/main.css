@@ -1,8 +1,16 @@
+/* General */
 @import './fonts.css';
 @import './helpers.css';
 @import './animations.css';
+@import '../lib/fontawesome/css/all.css';
+@import './base.css';
+@import './home.css';
 
 /* Apps */
 
 @import './apps/email/email-main.css';
 @import './apps/keep/keep-main.css';
+
+.wrapper {
+    height: 100vh;
+}

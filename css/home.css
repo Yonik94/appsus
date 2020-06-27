@@ -1,0 +1,14 @@
+.home-container {
+    background-image: url(../img/appsus-background.jpg);
+    background-size: cover;
+    background-position-x: center;
+}
+
+.logo {
+    font-family: 'Spartan';
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .9);
+    font-size: calc(3rem + 10vw);
+    text-shadow: 10px 20px 30px rgba(0, 0, 0, .8);
+    width: fit-content;
+}

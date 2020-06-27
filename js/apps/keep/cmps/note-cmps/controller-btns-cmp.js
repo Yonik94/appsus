@@ -13,6 +13,7 @@ export default {
         },
         deleteNote() {
             console.log('Delete');
+            this.$emit('deleteNote');
         },
         duplicateNote() {
             console.log('Duplicate');

@@ -9,7 +9,7 @@ export default {
     template:
         `<main>
             <article v-for="note in notes" @click="selectNote(note)">
-                    <component :is="note.type" :note="note" style="border: 1px solid black"></component>
+                    <component :is="note.type" @updateNote="updateNote" :note="note" style="border: 1px solid black"></component>
             </article>
         </main>`,
     components: {
@@ -22,6 +22,9 @@ export default {
         selectNote(note) {
             console.log({ noteId: note.noteId }); // To Delete
             this.$emit('selectedNote', note);
+        },
+        updateNote(note) {
+            this.$emit('updateNote', note);
         }
     }
 }

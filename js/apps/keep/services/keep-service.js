@@ -4,7 +4,6 @@ import { utilsService } from '../../../services/utils-service.js';
 export const keepService = {
     query,
     queryById,
-    // saveNote,
     updateNote
 }
 
@@ -32,5 +31,5 @@ function updateNote(note) {
     gNotes.splice(noteIdx, 1, note);
 
     utilsService.saveToStorage('notes', gNotes);
-    return Promise.resolve(note);   
+    return Promise.resolve(gNotes);
 }

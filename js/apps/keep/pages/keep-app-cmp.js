@@ -5,9 +5,9 @@ import notesList from '../cmps/notes-list-cmp.js';
 export default {
     name: 'keep-app',
     template:
-        `<main>
+        `<main class="keep-app">
             <input type="text" placeholder="enter your note text"/>
-            <notes-list :notes="notes" @selectedNote="selectNote"></notes-list>
+            <notes-list @updateNote="updateNote" :notes="notes" @selectedNote="selectNote"></notes-list>
             </main>`,
 
     data() {
@@ -32,6 +32,21 @@ export default {
     methods: {
         selectNote(note) {
             this.currNote = note;
+        },
+        updateNote(note) {
+            keepService.updateNote(note)
+                .then(notes => { this.notes = notes });
+        },
+        changeFavicon(src) {
+            var link = document.createElement('link'),
+                oldLink = document.getElementById('dynamic-favicon');
+            link.id = 'dynamic-favicon';
+            link.rel = 'shortcut icon';
+            link.href = src;
+            if (oldLink) {
+                document.head.removeChild(oldLink);
+            }
+            document.head.appendChild(link);
         }
     }
 }
