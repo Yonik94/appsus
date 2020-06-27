@@ -10,7 +10,3 @@
 
 @import './apps/email/email-main.css';
 @import './apps/keep/keep-main.css';
-
-.wrapper {
-    height: 100vh;
-}

@@ -3,11 +3,11 @@ import { emailService } from '../services/email-service.js';
 export default {
     props: ['email'],
     template:
-        `<li class="flex space-between" :class="{ fw600: !email.status.isRead }"
+        `<li class="email-preview flex space-between" :class="{ fw600: !email.status.isRead }"
         @click="openEmail(email)">
-        <div>{{ getEmailDetails.from }}</div>
-        <div>{{ email.subject }} - {{ email.body }}</div>
-        <div>{{ getEmailDetails.sentAt }}</div>
+            <div class="email-from">{{ getEmailDetails.from }}</div>
+            <div class="email-subject">{{ email.subject }} - {{ email.body }}</div>
+            <div class="email-sent-at">{{ getEmailDetails.sentAt }}</div>
     </li>`,
     computed: {
         getEmailDetails(){

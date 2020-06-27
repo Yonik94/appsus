@@ -125,6 +125,10 @@ input, textarea {
   border: none;
 }
 
+.wrapper {
+  height: 100vh;
+}
+
 .screener {
   position: fixed;
   z-index: 1;
