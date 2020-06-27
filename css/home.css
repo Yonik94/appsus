@@ -12,20 +12,17 @@
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.9);
   font-size: calc(2rem + 10vw);
-  text-shadow: 10px 20px 30px rgba(0, 0, 0, 0.8);
-  flex-grow: 3;
-  align-items: flex-end;
-  transform: skewX(-3deg);
+  text-shadow: 10px 30px 30px rgba(0, 0, 0, 0.8);
   animation: skew 3s infinite;
   animation-direction: alternate;
 }
 .home-container .email-icon {
   /* height: 120px; */
-  height: calc(4rem + (12vw / 3));
+  height: calc(6rem + (4vw / 3));
 }
 .home-container .keep-icon {
   /* height: 90px; */
-  height: calc(3rem + 3vw);
+  height: calc(4.5rem + 1vw);
   margin: 15px 0;
 }
 
