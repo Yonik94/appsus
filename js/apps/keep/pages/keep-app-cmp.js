@@ -1,5 +1,4 @@
 import { keepService } from '../services/keep-service.js'
-import { eventBus } from '../../../services/event-bus-service.js'
 import notesList from '../cmps/notes-list-cmp.js';
 import noteCreate from '../cmps/note-create-cmp.js';
 
@@ -9,33 +8,27 @@ export default {
         `<main class="keep-app">
             <note-create @createNote="createNote"></note-create>
             <notes-list :notes="notes" @updateNote="updateNote" @deleteNote="deleteNote"
-                @selectedNote="selectNote"></notes-list>
+                @duplicateNote="duplicateNote"></notes-list>
             </main>`,
-
+            // @selectedNote="selectNote"
     data() {
         return {
             notes: null,
-            currNote: null
+            // currNote: null
         }
     },
     created() {
         keepService.query()
             .then(notes => this.notes = notes);
-
-        eventBus.$on('updateNotes', () => {
-            keepService.query()
-                .then(notes => this.notes = notes)
-                .then(() => console.log('RENDERED', this.notes));
-        });
     },
     components: {
         notesList,
         noteCreate
     },
     methods: {
-        selectNote(note) {
-            this.currNote = note;
-        },
+        // selectNote(note) {
+        //     this.currNote = note;
+        // },
         createNote(noteType, inputVal) {
             console.log(this.noteType, this.inputVal)
             keepService.createNote(noteType, inputVal)
@@ -43,7 +36,7 @@ export default {
         },
         updateNote(note) {
             keepService.updateNote(note)
-                .then(notes => { this.notes = notes });
+                .then(notes => { this.notes = notes; console.log(this.notes) })
         },
         changeFavicon(src) {
             var link = document.createElement('link'),
@@ -58,6 +51,10 @@ export default {
         },
         deleteNote(noteId) {
             keepService.deleteNote(noteId)
+                .then(notes => { this.notes = notes });
+        },
+        duplicateNote(note) {
+            keepService.duplicateNote(note)
                 .then(notes => { this.notes = notes });
         }
     }

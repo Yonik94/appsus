@@ -1,14 +1,28 @@
 .home-container {
-    background-image: url(../img/appsus-background.jpg);
-    background-size: cover;
-    background-position-x: center;
+  background-image: url(../img/appsus-background.jpg);
+  background-size: cover;
+  background-position-x: center;
+  /* Scrollbars during animation temporary workaround */
+  overflow: hidden;
 }
 
 .logo {
-    font-family: 'Spartan';
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, .9);
-    font-size: calc(3rem + 10vw);
-    text-shadow: 10px 20px 30px rgba(0, 0, 0, .8);
-    width: fit-content;
+  font-family: 'Spartan';
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: calc(2rem + 10vw);
+  text-shadow: 10px 20px 30px rgba(0, 0, 0, 0.8);
+  /* width: fit-content; */
+  flex-grow: 3;
+  align-items: flex-end;
+}
+
+.home-container .email-icon {
+  /* height: 120px; */
+  height: calc(4rem + (12vw / 3));
+}
+.home-container .keep-icon {
+  /* height: 90px; */
+  height: calc(3rem + 3vw);
+  margin: 15px 0;
 }

@@ -87,6 +87,32 @@ input, textarea {
   height: 100%;
 }
 
+/* margins */
+
+.m1 {
+  margin: 0.25em;
+}
+
+.m2 {
+  margin: 0.5em;
+}
+
+.m3 {
+  margin: 0.75em;
+}
+
+.m4 {
+  margin: 1em;
+}
+
+.m5 {
+  margin: 2em;
+}
+
+.m6 {
+  margin: 3em;
+}
+
 /* text */
 
 .center {
@@ -117,8 +143,18 @@ input, textarea {
   font-weight: 900;
 }
 
+/* colors */
+
 .bg-transparent {
   background-color: transparent;
+}
+
+.color-white {
+  color: #fff;
+}
+
+.color-black {
+  color: #000;
 }
 
 .no-border {

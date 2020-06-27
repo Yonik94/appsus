@@ -7,6 +7,7 @@ export const keepService = {
     updateNote,
     createNote,
     deleteNote,
+    duplicateNote,
 }
 
 // function createNote(type){
@@ -76,6 +77,13 @@ function createNote(noteType, inputVal) {
 function deleteNote(noteId) {
     const noteIdx = gNotes.findIndex(currNote => currNote.noteId === noteId);
     gNotes.splice(noteIdx, 1);
+
+    utilsService.saveToStorage('notes', gNotes);
+    return Promise.resolve(gNotes);
+}
+
+function duplicateNote(note) {
+    gNotes.unshift(note);
 
     utilsService.saveToStorage('notes', gNotes);
     return Promise.resolve(gNotes);

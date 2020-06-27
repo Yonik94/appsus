@@ -6,41 +6,55 @@ export default {
     name: 'note-todos',
     props: ['note'],
     template:
-    `<article :style="{ backgroundColor: note.style.backgroundColor }">
-        <h4 @blur="updateNote($event ,'title')" contenteditable="true" data-ph="Insert title">{{ note.title }}</h4>
+        `<article class="note" :style="{ backgroundColor: note.style.backgroundColor }">
+            <h4 @blur="updateNote($event ,'title')" @keydown.116="updateNote($event ,'title')"
+                contenteditable="true" data-ph="Title">{{ note.title }}</h4>
 
-        <ul class="clean-list">
-            <li>
-                <i class="far fa-plus-square"></i>
-                <input v-model="newTodoLineTxt" @keyup.enter="addTodoLine" @blur="addTodoLine" ref="inputNewTodo"
-                    placeholder="Insert item" type="text" class="bg-transparent no-border" />
-            </li>
+            <ul class="clean-list">
+                <li>
+                    <i class="far fa-plus-square"></i>
+                    <input v-model="newTodoLineTxt" @keyup.enter="addTodoLine" @blur="addTodoLine" ref="inputNewTodo"
+                        placeholder="Insert item" type="text" class="bg-transparent no-border" />
+                </li>
 
-            <li v-for="(todo, idx) in note.info.todos" :key="todo.todoId"> 
-            <input v-model="todo.isDone" @input="updateNote" type="checkbox">
-                <label :tabindex="idx" @blur="updateNote($event, 'txt', idx)" :class="{cross: todo.isDone}"
-                    @keydown.enter.prevent="splitTodoLine($event, idx)" contenteditable="true" tabindex="idx">{{ todo.txt }}</label>
-
-                    <button v-if="idx !== 0" @click="moveTodoLine(idx, -1)"><i class="fas fa-chevron-up"></i></button>
-                    <button v-if="idx !== note.info.todos.length - 1" @click="moveTodoLine(idx, 1)"><i class="fas fa-chevron-down"></i></button>
-
-                <button @click="deleteTodoLine(idx)"><i class="fas fa-times"></i></button>
-            </li>
-        </ul>
-
-        <controller-btns @deleteNote="deleteNote"></controller-btns>
-    </article>`,
+                <li v-for="(todo, idx) in note.info.todos" :key="todo.todoId"> 
+                    <input v-model="todo.isDone" @input="updateNote" type="checkbox" tabindex="-1">
+                    <label @blur="updateNote($event, 'txt', idx)" @keydown.enter.prevent="splitTodoLine($event, idx)"
+                        :class="{cross: todo.isDone}" @keydown.116="updateNote($event, 'txt', idx)" contenteditable="true">{{ todo.txt }}</label>
+                    
+                    <button @click="deleteTodoLine(idx)" tabindex="-1">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </li>
+            </ul>          
+            <controller-btns @deleteNote="deleteNote"  @duplicateNote="duplicateNote"></controller-btns>
+        </article>`,
+    // <button v-if="idx !== 0" @click="moveTodoLine(idx, -1)"><i class="fas fa-chevron-up"></i></button>
+    // <button v-if="idx !== note.info.todos.length - 1" @click="moveTodoLine(idx, 1)"><i class="fas fa-chevron-down"></i></button>
     data() {
         return {
-            newTodoLineTxt: ''
+            newTodoLineTxt: '',
+            // note: null
         }
     },
+    // created() {
+    //     this.note = this.initialNote;
+    // },
     components: {
         controllerBtns
     },
+    // watch: {
+    //     note: {
+    //       handler() {
+    //         console.log('WATCHED')
+    //       },
+    //       deep: true,
+    //       immediate: true,
+    //     }
+    // },
     methods: {
         updateNote(ev, elType, idx) {
-            console.log({ev, elType, idx});
+            console.log({ev, elType, idx})
             if (!elType) {
                 setTimeout(() => keepService.updateNote(this.note), 0);
             } else {
@@ -98,9 +112,13 @@ export default {
             this.note.info.todos[idx + diff] = currTodoLine;
 
             this.$emit('updateNote', this.note);
+            console.log(this.note)
         },
         deleteNote() {
             this.$emit('deleteNote', this.note.noteId)
-        }
+        },
+        duplicateNote() {
+            this.$emit('duplicateNote', this.note)
+        },
     }
 }

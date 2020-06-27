@@ -5,7 +5,7 @@ export default {
     props: ['note'],
     template:
         `<article>
-        <h4>{{ note.title }}</h4>
+        <h4 contenteditable="true" data-ph="Title">{{ note.title }}</h4>
         <p>{{ note.info.txt }}</p>
         <controller-btns></controller-btns>
     </article>`,
