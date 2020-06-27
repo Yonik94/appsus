@@ -83,7 +83,8 @@ function deleteNote(noteId) {
 }
 
 function duplicateNote(note) {
-    gNotes.unshift(note);
+    const noteIdx = gNotes.findIndex(currNote => currNote.noteId === note.noteId);
+    gNotes.splice(noteIdx + 1, 0, note);
 
     utilsService.saveToStorage('notes', gNotes);
     return Promise.resolve(gNotes);

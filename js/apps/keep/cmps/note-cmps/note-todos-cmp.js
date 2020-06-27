@@ -7,8 +7,9 @@ export default {
     props: ['note'],
     template:
         `<article class="note" :style="{ backgroundColor: note.style.backgroundColor }">
+            <button><i class="fas fa-thumbtack"></i></button>
             <h4 @blur="updateNote($event ,'title')" @keydown.116="updateNote($event ,'title')"
-                contenteditable="true" data-ph="Title">{{ note.title }}</h4>
+                contenteditable="true" data-ph="Title" class="inline">{{ note.title }}</h4>
 
             <ul class="clean-list">
                 <li>

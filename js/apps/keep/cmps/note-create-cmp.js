@@ -3,7 +3,7 @@
 export default {
     template:
     `<section class="flex" style="border: 1px solid #aaa">
-    <i class="far fa-plus-square"></i>
+        <i v-if="noteType === 'noteTodos'" class="far fa-plus-square"></i>
         <input v-model="inputVal" @blur="createNote" @keyup.enter="createNote" @enter="createNote"
             :placeholder="placeholder" class="bg-transparent no-border" type="text" />
         <button @click="switchNoteType('noteTxt')"><i class="fas fa-paragraph"></i></button>       

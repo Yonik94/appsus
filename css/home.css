@@ -4,6 +4,7 @@
   background-position-x: center;
   /* Scrollbars during animation temporary workaround */
   overflow: hidden;
+  text-shadow: 0px 1px 3px black;
 }
 
 .logo {
@@ -12,11 +13,12 @@
   color: rgba(255, 255, 255, 0.9);
   font-size: calc(2rem + 10vw);
   text-shadow: 10px 20px 30px rgba(0, 0, 0, 0.8);
-  /* width: fit-content; */
   flex-grow: 3;
   align-items: flex-end;
+  transform: skewX(-3deg);
+  animation: skew 3s infinite;
+  animation-direction: alternate;
 }
-
 .home-container .email-icon {
   /* height: 120px; */
   height: calc(4rem + (12vw / 3));
@@ -25,4 +27,12 @@
   /* height: 90px; */
   height: calc(3rem + 3vw);
   margin: 15px 0;
+}
+
+.home-container a {
+  transition: transform 0.2s;
+}
+
+.home-container a:hover {
+  transform: scale(1.05);
 }

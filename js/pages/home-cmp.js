@@ -2,18 +2,20 @@ export default {
     name: 'home',
     template:
         `<main class="home-container full-height flex column justify-center align-center">
-            <transition name="slide-fade">
-                <h2 v-show="pageLoad" class="logo flex">Appsus</h2>
-            </transition>
+        <transition name="hard-slide-fade">
+            <div v-show="pageLoad" class="flex grow3 align-end">
+            <h2 class="logo flex">Appsus</h2>
+            </div>
+        </transition>
 
             <transition name="slide-fade">
             <div v-show="pageLoad" class="flex align-center grow">
-                <router-link to="/email" class="flex column align-center space-between m5 color-white">
-                    <img src="../../img/svg/email.svg" class="email-icon" />
+                <router-link to="/email" class="flex column align-center space-between m6 color-white">
+                    <img src="../img/svg/email.svg" class="email-icon" />
                     Email
                     </router-link>  
-                <router-link to="/keep" class="flex column align-center space-between m5 color-white">
-                    <img src="../../img/svg/keep.svg" class="keep-icon" />
+                <router-link to="/keep" class="flex column align-center space-between m6 color-white">
+                    <img src="../img/svg/keep.svg" class="keep-icon" />
                     Keep
                 </router-link> 
             </div>
