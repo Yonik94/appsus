@@ -1,13 +1,22 @@
-.emails-list .email-from{
-    flex-basis: 10%;
+.emails-list .email-from {
+    width: 150px;
+    padding-right: 20px;
 }
-.emails-list .email-subject{
+
+.emails-list .email-subject {
     flex-basis: 75%;
 }
-.emails-list .email-sent-at{
+
+.emails-list .email-sent-at {
     flex-basis: 10%;
 }
-.emails-list select{
-    max-width: 100px ;
-    margin-bottom: 20px;
+
+.emails-list select {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+.emails-list .filter-container .email-search {
+    width: 300px;
+    height: 50px;
 }

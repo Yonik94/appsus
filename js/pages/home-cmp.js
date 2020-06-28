@@ -11,11 +11,11 @@ export default {
             <transition name="slide-fade">
             <div v-show="pageLoad" class="flex align-center grow">
                 <router-link to="/email" class="flex column align-center space-between m6 color-white">
-                    <img src="./img/svg/email.svg" class="email-icon" />
+                    <img src="./img/icons/email.svg" class="email-icon" />
                     Email
                     </router-link>  
                 <router-link to="/keep" class="flex column align-center space-between m6 color-white">
-                    <img src="./img/svg/keep.svg" class="keep-icon" />
+                    <img src="./img/icons/keep.svg" class="keep-icon" />
                     Keep
                 </router-link> 
             </div>
