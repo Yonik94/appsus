@@ -10,10 +10,6 @@ export const keepService = {
     duplicateNote,
 }
 
-// function createNote(type){
-
-// }
-
 let gNotes;
 
 function query() {
@@ -45,7 +41,9 @@ function createNote(noteType, inputVal) {
         title: '',
         info: {},
         style: {
-            backgroundColor: 'rgba(255, 255, 255)'
+            backgroundColor: 'rgba(255, 255, 255)',
+            borderColor: 'rgba(224, 224, 224)',
+            color: 'rgba(0, 0, 0)',
         }
     }
     switch (noteType) {
@@ -69,7 +67,7 @@ function createNote(noteType, inputVal) {
     }
 
     gNotes.unshift(newNote);
-    
+
     utilsService.saveToStorage('notes', gNotes);
     return Promise.resolve(gNotes);
 }
@@ -84,6 +82,8 @@ function deleteNote(noteId) {
 
 function duplicateNote(note) {
     const noteIdx = gNotes.findIndex(currNote => currNote.noteId === note.noteId);
+    note.noteId = utilsService.getRandomId();
+    console.log({ note, gNotes })
     gNotes.splice(noteIdx + 1, 0, note);
 
     utilsService.saveToStorage('notes', gNotes);

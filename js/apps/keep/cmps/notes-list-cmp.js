@@ -8,9 +8,10 @@ export default {
     name: 'notes-list',
     props: ['notes'],
     template:
-        `<section class="notes-list-container flex wrap justify-center">
-            <div v-for="note in notes">
-                <article class="note" :style="{ backgroundColor: note.style.backgroundColor, borderColor: note.style.backgroundColor }">
+        `<section class="notes-list-container flex wrap justify-center"
+        data-masonry='{ "itemSelector": ".note", "columnWidth": 320, "isFitWidth": true }'>
+
+                <article v-for="note in notes" class="note" :style="{ backgroundColor: note.style.backgroundColor, borderColor: note.style.borderColor }">
                     <div class="flex note-title-container">
                         <i class="fas fa-thumbtack"></i>
                         <h4 @blur="updateTitle($event, note)" @keydown.116="updateTitle($event, note)"
@@ -23,7 +24,7 @@ export default {
                     <controller-btns @deleteNote="deleteNote(note.noteId)" @duplicateNote="duplicateNote(note)"
                         @changeNoteColor="changeNoteColor($event ,note)"></controller-btns>
                 </article>
-            </div>
+
         </section>`,
     components: {
         noteTxt,
@@ -37,10 +38,10 @@ export default {
             this.$emit('updateNote', note);
         },
         deleteNote(noteId) {
-            this.$emit('deleteNote', noteId)
+            this.$emit('deleteNote', noteId);
         },
         duplicateNote(note) {
-            this.$emit('duplicateNote', note)
+            this.$emit('duplicateNote', JSON.parse(JSON.stringify(note)));
         },
         updateTitle(ev, note) {
             const value = ev.target.innerText;

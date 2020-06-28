@@ -111,11 +111,11 @@ textarea {
 }
 
 .relative {
-  display: relative;
+  position: relative;
 }
 
 .absolute {
-  display: absolute;
+  position: absolute;
 }
 
 .inline-list > li {
