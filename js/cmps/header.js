@@ -1,19 +1,20 @@
+import { eventBus } from '../services/event-bus-service.js';
 export default {
     name: 'main-header',
     template:
-    `<main class="main-header">
-        <transition name="slide-fade"/>
+        `<main class="main-header">
         <div class="flex space-between">
-            <div class="flex align-center" v-if="pagePath === 'keep'">
-            <img class="keep" src="./img/icons/keep.svg" alt="">
-            <h2>Keep</h2>
+        <div class="flex align-center" v-if="pagePath === 'keep'">
+        <img class="keep" src="./img/icons/keep.svg" alt="">
+        <h2 class="color-grey">Keep</h2>
+        </div>
+        <div class="flex align-center" v-if="pagePath === 'email'">
+        <i class="hamburger fas fa-bars" @click="openCloseHamburger"></i>
+        <img class="email" src="./img/icons/email.svg" alt="">
+            <h2 class="color-grey">Email</h2>
             </div>
-            <div class="flex align-center" v-if="pagePath === 'email'">
-            <img class="email" src="./img/icons/email.svg" alt="">
-            <h2>Email</h2>
-            </div>
-            <router-link to="/" class="flex align-center"><h3>Appsus</h3></router-link>
-            <router-link to="/keep" class="flex align-center" v-if="pagePath === 'email'">
+            <router-link to="/" class="flex align-center"><h3 class="fw500">Appsus</h3></router-link>
+            <router-link to="/keep" class="flex align-center " v-if="pagePath === 'email'">
                 <img class="keep keep-display" src="./img/icons/keep.svg" alt="">
             </router-link> 
             <router-link to="/email" class="flex align-center" v-if="pagePath === 'keep'">
@@ -21,14 +22,20 @@ export default {
             </router-link> 
         </div>
             </main>`,
-            data(){
-                return {
-                    pagePath: ''
-                }
-            },
-            created(){
-                    (this.$route.path.includes('email')) ? this.pagePath = 'email' : this.pagePath = 'keep'
-                    // console.log(this.$route)
-            }
+    data() {
+        return {
+            pagePath: '',
+            isHamburgerOpen: false
         }
-        // <router-link to="/about">About</router-link> 
+    },
+    methods:{
+        openCloseHamburger(){
+            this.isHamburgerOpen = !this.isHamburgerOpen
+            eventBus.$emit('isHumburgerOpen', this.isHamburgerOpen)
+            console.log(this.isHamburgerOpen)
+        }
+    },
+    created() {
+        (this.$route.path.includes('email')) ? this.pagePath = 'email' : this.pagePath = 'keep'
+    }
+}
