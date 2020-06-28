@@ -8,24 +8,26 @@
 import emailCompose from '../cmps/email-compose-cmp.js';
 import emailSideNav from '../cmps/side-nav-cmp.js';
 import { eventBus } from '../../../services/event-bus-service.js';
-import  mainHeader  from '../../../cmps/header.js';
+import mainHeader from '../../../cmps/header.js';
 
 export default {
     name: 'email-app',
     template:
-    // <header>Insert header component here</header>
-        `<main class="flex column">
-            <main-header></main-header>
+        `<main class="flex column" :class="{'toggle-nav': isMenuOpen}">
+            <main-header @changeHamburger="openCloseMenu"></main-header>
             <section class="email-main-container flex">
-                <email-side-nav></email-side-nav>
+                <email-side-nav @changeHamburger="openCloseMenu"></email-side-nav>
                 <router-view class="grow" />
                 <email-compose v-show="isDraftOpen" :open="isDraftOpen"></email-compose>
             </section>
         </main>`,
     data() {
-        return { isDraftOpen: false }
-    },
+        return {
+            isDraftOpen: false,
+            isMenuOpen: false
 
+        }
+    },
     components: {
         emailCompose,
         emailSideNav,
@@ -43,5 +45,8 @@ export default {
         toggleCompose(state) {
             this.isDraftOpen = state;
         },
+        openCloseMenu(){
+            this.isMenuOpen = !this.isMenuOpen 
+        }
     }
 }

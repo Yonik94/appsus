@@ -5,13 +5,13 @@
 }
 
 .main-header .keep {
-    height: calc(4rem + 1vw);
-    margin: 15px 30px;
+    height: calc(2rem + 2vw);
+    margin: 15px 15px;
 }
 
 .main-header .email {
-    height: calc(5.2rem + 1.3vw);
-    margin: 0px 30px;
+    height: calc(2.6rem + 2.6vw);
+    margin: 0px 15px;
 }
 
 .main-header .email-display{
@@ -19,5 +19,17 @@
 }
 .main-header .keep-display{
     height: calc(1rem + 1vw);
+}
+.main-header .hamburger{
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .main-header .hamburger{
+        display: flex;
+        align-items: center;
+        margin: 0px 15px;
+        font-size: 50px;
+    }
 }
 

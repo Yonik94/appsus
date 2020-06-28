@@ -1,4 +1,5 @@
-.email-side-nav{
+.email-side-nav {
+    display: unset;
     padding-inline-end: 16px;
 }
 
@@ -26,17 +27,34 @@
     line-height: 20px;
 }
 
-.email-side-nav>*:not(.selectedInbox):not(:first-child):hover{
+.email-side-nav>*:not(.selectedInbox):not(:first-child):hover {
     background-color: rgb(241, 243, 244);
 }
 
-.email-side-nav>*.selectedInbox{
+.email-side-nav>*.selectedInbox {
     background-color: #fce8e6;
     color: #d93025;
     font-weight: bold;
 }
 
-.email-side-nav>*.selectedFolder{
+.email-side-nav>*.selectedFolder {
     background-color: #e8eaed;
     font-weight: bold;
+}
+
+@media (max-width: 699px) {
+    .email-side-nav {
+        display: none;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.89);
+        position: absolute;
+        z-index: 1;
+    }
+    .toggle-nav .email-side-nav{
+        display: block;
+    }
+}
+
+.hamburger {
+    cursor: pointer;
 }
