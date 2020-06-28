@@ -2,14 +2,6 @@
     overflow: hidden;
 }
 
-.emails-list .email-from {
-    flex-basis: 15%;
-    padding-right: 15px;
-    min-width: 80px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 .emails-list .email-subject {
     flex-basis: 75%;
 }

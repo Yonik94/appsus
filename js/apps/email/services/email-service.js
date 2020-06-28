@@ -15,6 +15,8 @@ export const emailService = {
     deleteEmail,
     getEmails,
     getEmailsbyReadingStatus,
+    getGEmails,
+    deleteEmails
 }
 
 let gEmails;
@@ -105,6 +107,7 @@ function createEmail(folder = 'sent') {
 }
 
 function sendEmail(emailId) {
+    console.log(emailId)
     return getEmailById(emailId)
         .then(email => {
             email.folder = 'sent';
@@ -166,4 +169,20 @@ function getEmails(ByText, emails) {
 function getEmailsbyReadingStatus(status, emails){
    const filteredEmails = emails.filter(email => email.status.isRead === (status === 'read') ? true : false)
    return Promise.resolve(filteredEmails)
+}
+
+function getGEmails(){
+    return gEmails
+}
+
+function deleteEmails(emailIds){
+    emailIds.forEach(emailId => {
+        const idx = gEmails.findIndex(email => email.emailId === emailId)
+        if (!gEmails[idx].status.isDeleted){
+            gEmails[idx].status.isDeleted = true
+        }else {
+            gEmails.splice(idx, 1)
+        }
+        utilsService.saveToStorage()
+    })
 }

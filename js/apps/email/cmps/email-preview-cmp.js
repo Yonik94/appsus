@@ -6,12 +6,18 @@ export default {
         `<li class="email-preview flex align-center"
         :class="{ fw600: !email.status.isRead, 'bg-white': !email.status.isRead, 'bg-grey': email.status.isRead}"
         @click="openEmail(email)">
+            <input @click.stop="selectEmail" ref="checkbox" type="checkbox"></input>
             <img @click.prevent="updateStarredStatus" v-if="!email.status.isStarred" class="star" src="img/icons/star.png" alt="">
             <img @click.prevent="updateStarredStatus" class="star-f" v-else src="img/icons/star-f.png" alt="">
             <div class="email-from">{{ getEmailDetails.from }}</div>
             <div class="email-subject">{{ email.subject }} - <span class="fw400">{{ email.body }}</span></div>
             <div class="email-sent-at">{{ getEmailDetails.sentAt }}</div>
     </li>`,
+    data(){
+        return {
+
+        }
+    },
     computed: {
         getEmailDetails() {
             return {
@@ -27,6 +33,9 @@ export default {
         },
         updateStarredStatus() {
             this.email.status.isStarred = !this.email.status.isStarred
+        },
+        selectEmail(){
+            this.$emit('emailSelected', this.$refs.checkbox.checked, this.email.emailId)
         }
     }
 }

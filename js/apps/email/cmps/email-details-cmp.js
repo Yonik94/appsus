@@ -5,10 +5,13 @@ export default {
         `<article class="email-details">
             <h3 class="email-subject">{{ email.subject }}</h3>
             <div class="sender-details flex">
-                <h5 class="mr2" ><{{ email.from }}></h5>
-                <h4>{{ getEmailDetails.from }}</h4>
+            <h4 class="email-from-details mr3">{{ getEmailDetails.from }}</h4>
+            <h5 class="email-from" ><{{ email.from }}></h5>
+            <div>
+                
             </div>
-            <p>{{ email.body }}</p>
+            </div>
+            <p class="email-body">{{ email.body }}</p>
         </article>`,
     data() {
         return {

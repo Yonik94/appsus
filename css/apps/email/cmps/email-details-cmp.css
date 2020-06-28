@@ -7,5 +7,15 @@
 }
 
 .email-details .sender-details{
-    padding: 10px 0;
+    padding: 5px 0;
+}
+
+.email-details .email-from{
+    color: #555555;
+    font-weight: unset;
+    width: fit-content;
+}
+
+.email-details .email-body{
+    max-width: 880px;
 }

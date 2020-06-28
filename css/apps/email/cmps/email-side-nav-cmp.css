@@ -8,6 +8,7 @@
     padding: 0.5em 2em 0.5em 1.5em;
     border-radius: 5em;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+    margin-inline-start: 8px;
 }
 
 .compose-email-btn:hover {
@@ -31,6 +32,10 @@
     background-color: rgb(241, 243, 244);
 }
 
+.email-side-nav i {
+    color: #6b6c6e;
+}
+
 .email-side-nav>*.selectedInbox {
     background-color: #fce8e6;
     color: #d93025;
@@ -50,7 +55,7 @@
         position: absolute;
         z-index: 1;
     }
-    .toggle-nav .email-side-nav{
+    .toggle-nav .email-side-nav {
         display: block;
     }
 }

@@ -19,7 +19,8 @@
 .email-preview .star{
     opacity: 0.16;
     height: 20px;
-    padding-inline-end: 10px;
+    padding-inline-end: 20px;
+    padding-inline-start: 20px;
 }
 
 .email-preview .star:hover{
@@ -27,7 +28,8 @@
 }
 
 .email-preview .star-f{
-    padding-inline-end: 5px;
+    padding-inline-end: 20px;
+    padding-inline-start: 20px;
     height: 20px;
 }
 
@@ -35,4 +37,13 @@
 
 .email-preview .email-sent-at{
     font-size: 0.875rem;
+}
+
+.email-preview .email-from {
+    flex-basis: 6.3%;
+    min-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-inline-end: 10px;
 }

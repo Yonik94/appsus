@@ -77,6 +77,120 @@ const gEmails = [
             isDeleted: false
         }
     },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'Amenda@gmail.com',
+        subject: `I think you'll appreciate this Tal
+        `,
+        body:
+            `Hey Tal,
+
+            I came across this article. It is well written and drives the point home in my opinion.
+            
+            I'd love to hear your feedback on the subject and maybe we can get together sometime soon to discuss it.
+            
+            Hope everything is going well!
+            
+            Cheers,
+            
+            `,
+        sentAt: 1552991114000,
+        folder: 'inbox',
+        status: {
+            isRead: true,
+            isStarred: false,
+            isDeleted: true
+        }
+    },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'Shir@pelephone.co.il',
+        subject: `Let's schedule a call`,
+        body:
+            `Hi Yoni,
+
+            I hope you're doing well. I was hoping we could hop on the phone soon to get a better idea of what you're interested and what I can do to help.
+            
+            Are you available on Monday between INSERT TIME? Please let me know if there's a more convenient time. Also, is {{ contact_phone_number | fallback: "" }} still your preferred number?
+            
+            Looking forward to connecting soon,`,
+        sentAt: 1552991114000,
+        folder: 'inbox',
+        status: {
+            isRead: false,
+            isStarred: true,
+            isDeleted: false
+        }
+    },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'Jef-Bezos@Amazon.com',
+        subject: `Hi Yoni, just touching base`,
+        body:
+            `Hey Yoni,
+
+            I know we haven't spoken in a while, so I just wanted to touch base. As always, I'm here as a resource for you, so just let me know if you have any questions about new features, best practices, or anything in between!
+            
+            As soon as you run into a question or concern, please let me know by email or you can call 0506548622.
+            
+            If you're having a great experience with Amazon so far, would you be interested in referring us to your network?
+            
+            Kindly,`,
+        sentAt: 1552991114000,
+        folder: 'inbox',
+        status: {
+            isRead: false,
+            isStarred: true,
+            isDeleted: false
+        }
+    },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'me@gmail.com',
+        to: 'Neta@gmail.com',
+        subject: `I'm voting this November - are you?`,
+        body:
+            `Hey Tal,
+
+            Hope you’re having a lovely day. Just wanted to send along a quick email to say thanks for working with me. As a small fish in a big pond, it’s sometimes hard for me to compete with the larger fish, so I really appreciate you and your business!
+            
+            Additionally, to keep me swimming, can you think of 1 person in your neighborhood or office who may need help that I could provide? If so, I’d love to meet them.
+            
+            Thank you, thank you, thank you!`,
+        sentAt: 1552991114000,
+        folder: 'drafts',
+        status: {
+            isRead: false,
+            isStarred: true,
+            isDeleted: false
+        }
+    },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'Monica@telefonica.com',
+        subject: `Help out this small fish?`,
+        body:
+            `Hey Yoni,
+
+            Hope you're well. As you know, we have a big day coming up on Tuesday, November 8th! No, not my birthday, it's Election Day!
+            
+            Did you know that only 55% of eligible voters voted in 2012?
+            
+            I'm not going to tell you who to vote for - that's none of my business - but what I am asking you to do is join me in voting!
+            
+            Here's information on deadlines for voter registration and absentee ballots (there's still time!). And this could be helpful if you're looking to see where the candidates stand on the issues.
+            
+            There's nothing like sharing our voice in the democratic process. I hope you join me this November!
+            
+            All the best,`,
+        sentAt: 1552991114000,
+        folder: 'drafts',
+        status: {
+            isRead: false,
+            isStarred: true,
+            isDeleted: false
+        }
+    },
 
     {
         emailId: utilsService.getRandomId(),

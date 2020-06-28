@@ -3,7 +3,6 @@ import { emailService } from '../services/email-service.js';
 import { eventBus } from '../../../services/event-bus-service.js';
 export default {
     name: 'email-compose',
-    props: ['emailId'],
     template:
         `<section class="email-compose flex column">
             <div class="compose-head flex space-between">
@@ -22,7 +21,7 @@ export default {
             emailTo: '',
             emailSubject: '',
             emailBody: '',
-            // emailId: null,
+            draftId: null,
             emailHead: ''
         }
     },
@@ -30,40 +29,54 @@ export default {
     methods: {
         sendEmail() {
             if (this.emailTo === '' && this.emailSubject === '' && this.emailBody === '') {
-                emailService.deleteEmail(this.emailId)
-                    .then(() => this.closeDraft());
+                emailService.deleteEmail(this.draftId)
+                    .then(() => {
+                        this.closeDraft()
+                        this.clearComposeForm()
+                        this.draftId = null,
+                            this.emailHead = ''
+                    });
                 return;
             }
             const email = this.createEmailDetails()
-            emailService.sendEmail(this.emailId)
+            emailService.sendEmail(this.draftId)
                 .then(() => {
                     this.closeDraft();
+                    this.clearComposeForm()
                 });
         },
+
         createDraft() {
             emailService.createDraft()
-                .then(draftId => this.emailId = draftId);
+                .then(draftId => this.draftId = draftId);
         },
+
         updateDraft() {
             const email = this.createEmailDetails();
-            emailService.updateDraft(email, this.emailId)
+            emailService.updateDraft(email, this.draftId)
                 .then(() => this.updateEmails());
         },
+
         updateEmails() {
-            eventBus.$emit('updateEmails');
+            return Promise.resolve(eventBus.$emit('updateEmails'));
         },
+
         closeDraft() {
-            if (this.emailTo === '' && this.emailSubject === '' && this.emailBody === '') {
-                emailService.deleteEmail(this.emailId)
-                    .then(() => this.updateEmails())
-            }
-            eventBus.$emit('closeDraft');
-            this.updateEmails();
-            this.emailTo = '';
-            this.emailSubject = '';
-            this.emailBody = '';
-            this.emailId = null;
+            eventBus.$emit('closeDraft')
+            this.updateEmails()
+                .then(() => {
+                    if (this.emailTo === '' && this.emailSubject === '' && this.emailBody === '') {
+                        emailService.deleteEmail(this.draftId)
+                            .then(() => this.draftId = null)
+                            .then(() => this.updateEmails())
+                    }
+                })
+                .then(() => {
+                    this.clearComposeForm()
+                    this.$router.go(-1)
+                })
         },
+
         createEmailDetails() {
             return {
                 from: 'me@gmail.com',
@@ -72,30 +85,37 @@ export default {
                 body: this.emailBody
             }
         },
+
         emailHeader() {
-            if (this.emailId) {
-                const email = emailService.getEmailById(this.emailId)
-                // this.emailId = this.$route.param.emailId
-                this.emailTo = email.to
-                this.emailSubject = email.subject
-                this.emailBody = email.body
-                this.emailHead = email.subject
+            if (this.draftId) {
+                emailService.getEmailById(this.draftId)
+                    .then(email => {
+                        this.emailTo = email.to
+                        this.emailSubject = (email.subject !== '(no-subject)') ? email.subject : ''
+                        this.emailBody = email.body
+                        this.emailHead = (email.subject !== '(no-subject)') ? email.subject : 'New email'
+                    })
                 return
             }
-            console.log('email')
+            this.clearComposeForm()
+            this.emailHead = 'New email'
+        },
+
+        clearComposeForm() {
             this.emailTo = ''
             this.emailSubject = ''
             this.emailBody = ''
-            this.emailHead = 'New email'
         }
     },
+
     created() {
         eventBus.$on('composeEmail', () => {
             this.createDraft();
         });
-        if (this.emailId){
+        if (this.$route.params.emailId) {
+            this.draftId = this.$route.params.emailId
             this.emailHeader()
         }
-        
+
     }
 }
