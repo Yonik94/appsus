@@ -1,7 +1,7 @@
 export default {
     name: 'main-header',
     template:
-    `<main class="main-header">
+        `<main class="main-header">
         <transition name="slide-fade"/>
         <div class="flex space-between">
             <div class="flex align-center" v-if="pagePath === 'keep'">
@@ -21,14 +21,14 @@ export default {
             </router-link> 
         </div>
             </main>`,
-            data(){
-                return {
-                    pagePath: ''
-                }
-            },
-            created(){
-                    (this.$route.path.includes('email')) ? this.pagePath = 'email' : this.pagePath = 'keep'
-                    // console.log(this.$route)
-            }
+    data() {
+        return {
+            pagePath: ''
         }
-        // <router-link to="/about">About</router-link> 
+    },
+    created() {
+        (this.$route.path.includes('email')) ? this.pagePath = 'email' : this.pagePath = 'keep'
+        // console.log(this.$route)
+    }
+}
+        // <router-link to="/about">About</router-link>

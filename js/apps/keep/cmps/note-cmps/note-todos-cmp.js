@@ -48,7 +48,6 @@ export default {
     // },
     methods: {
         updateNote(ev, elType, idx) {
-            console.log({ev, elType, idx})
             if (!elType) {
                 setTimeout(() => keepService.updateNote(this.note), 0);
             } else {
@@ -106,7 +105,6 @@ export default {
             this.note.info.todos[idx + diff] = currTodoLine;
 
             this.$emit('updateNote', this.note);
-            console.log(this.note)
         },
         deleteNote() {
             this.$emit('deleteNote', this.note.noteId)

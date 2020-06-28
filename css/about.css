@@ -1,0 +1,15 @@
+.about {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.about article {
+    flex-basis: 50%;
+}
+
+.about img {
+    border-radius: 50%;
+    width: 100%;
+    max-width: 200px;
+}
