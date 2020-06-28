@@ -65,3 +65,16 @@ h4[contentEditable='true']:empty:not(:focus):before {
   opacity: 0.5;
   font-weight: 300;
 }
+
+.note .fas.fa-thumbtack {
+  cursor: pointer;
+  transition: opacity 0.3;
+  color: #666;
+}
+.note:hover .fas.fa-thumbtack {
+  opacity: 1 !important;
+}
+
+.note .fas.fa-thumbtack:hover {
+  color: #000;
+}

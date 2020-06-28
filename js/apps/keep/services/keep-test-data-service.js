@@ -20,7 +20,7 @@ const gNotes = [
             txt: ``
         },
         style: {
-            backgroundColor: 'rgb(255, 244, 117)',
+            backgroundColor: '#ccff90',
         }
     },
     {
@@ -34,7 +34,87 @@ const gNotes = [
             dad: 050-7654321`
         },
         style: {
-            backgroundColor: 'rgb(232, 234, 237)',
+            backgroundColor: '#a7ffeb',
+        }
+    },
+    {
+        noteId: utilsService.getRandomId(),
+        type: 'noteTxt',
+        isPinned: false,
+        title: 'hahaha',
+        info: {
+            txt:
+                `Q: Why did the programmer quit his job?
+
+                A: Because he didn't get arrays.`
+        },
+        style: {
+            backgroundColor: '#b356ac',
+        }
+    },
+    {
+        noteId: utilsService.getRandomId(),
+        type: 'noteTodos',
+        isPinned: false,
+        title: 'Latin',
+        info: {
+            todos: [
+                {
+                    txt: 'unite',
+                    isDone: false,
+                    todoId: utilsService.getRandomId()
+                },
+                {
+                    txt: 'triangular',
+                    isDone: false,
+                    todoId: utilsService.getRandomId()
+                },
+                {
+                    txt: 'decade',
+                    isDone: true,
+                    todoId: utilsService.getRandomId()
+                },
+                {
+                    txt: 'septet',
+                    isDone: false,
+                    todoId: utilsService.getRandomId()
+                },
+                {
+                    txt: 'octagon',
+                    isDone: false,
+                    todoId: utilsService.getRandomId()
+                },
+                {
+                    txt: 'quins',
+                    isDone: false,
+                    todoId: utilsService.getRandomId()
+                },
+                {
+                    txt: 'union',
+                    isDone: false,
+                    todoId: utilsService.getRandomId()
+                },
+            ]
+        },
+        style: {
+            backgroundColor: '#f28b82',
+        },
+    },
+    {
+        noteId: utilsService.getRandomId(),
+        type: 'noteTxt',
+        isPinned: false,
+        title: 'Masonry',
+        info: {
+            txt:
+                `Fluid stacking layout: https://masonry.desandro.com/
+                What is Masonry?
+                Masonry is a JavaScript grid layout library.
+                It works by placing elements in optimal position based on available vertical space,
+                sort of like a mason fitting stones in a wall. You’ve probably seen it in use all over the Internet.`
+        },
+        style: {
+            backgroundColor: '#c1be48',
         }
     },
     {
@@ -47,7 +127,7 @@ const gNotes = [
             txt: `it's so cute!`
         },
         style: {
-            backgroundColor: 'rgb(255, 244, 117)',
+            backgroundColor: '#cbf0f8',
         }
     },
     {
@@ -71,12 +151,51 @@ const gNotes = [
                     txt: 'cheese',
                     isDone: true,
                     todoId: utilsService.getRandomId()
-                }
+                },
+                {
+                    txt: 'peanut butter',
+                    isDone: false,
+                    todoId: utilsService.getRandomId()
+                },
+                {
+                    txt: 'peanut butter',
+                    isDone: false,
+                    todoId: utilsService.getRandomId()
+                },
+                {
+                    txt: 'peanut butter',
+                    isDone: false,
+                    todoId: utilsService.getRandomId()
+                },
             ]
         },
         style: {
-            backgroundColor: 'rgb(204, 255, 144)',
+            backgroundColor: '#aecbfa',
         },
+    },
+    {
+        noteId: utilsService.getRandomId(),
+        type: 'noteVideo',
+        isPinned: false,
+        title: 'JS Pro Tips',
+        info: {
+            videoUrl: 'https://www.youtube.com/embed/Mus_vwhTCq0'
+        },
+        style: {
+            backgroundColor: '#f28b82',
+        }
+    },
+    {
+        noteId: utilsService.getRandomId(),
+        type: 'noteVideo',
+        isPinned: false,
+        title: 'תור ליאור',
+        info: {
+            videoUrl: 'https://www.youtube.com/embed/N6a6EUvgSFQ'
+        },
+        style: {
+            backgroundColor: '#ccff90',
+        }
     },
     {
         noteId: utilsService.getRandomId(),
@@ -84,10 +203,10 @@ const gNotes = [
         isPinned: false,
         title: '',
         info: {
-            videoUrl: 'https://www.youtube.com/embed/Mus_vwhTCq0'
+            videoUrl: 'https://www.youtube.com/embed/Zy4KtD98S2c'
         },
         style: {
-            backgroundColor: 'rgb(174, 203, 250)',
+            backgroundColor: '#e6c9a8',
         }
     },
     {
@@ -100,9 +219,50 @@ const gNotes = [
             txt: `Solved.`
         },
         style: {
-            backgroundColor: 'rgb(215, 174, 251)',
+            backgroundColor: '#fff475',
         }
     },
+    {
+        noteId: utilsService.getRandomId(),
+        type: 'noteImg',
+        isPinned: false,
+        title: '',
+        info: {
+            imgUrl: 'https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif',
+            txt: `oh right`
+        },
+        style: {
+            backgroundColor: '#fbbc04',
+        }
+    },
+    {
+        noteId: utilsService.getRandomId(),
+        type: 'noteTodos',
+        isPinned: false,
+        title: 'TODO',
+        info: {
+            todos: [
+                {
+                    txt: 'Call grandma',
+                    isDone: true,
+                    todoId: utilsService.getRandomId()
+                },
+                {
+                    txt: 'Learn Node',
+                    isDone: true,
+                    todoId: utilsService.getRandomId()
+                },
+                {
+                    txt: 'Go to sleeep',
+                    isDone: false,
+                    todoId: utilsService.getRandomId()
+                }
+            ]
+        },
+        style: {
+            backgroundColor: '#e8eaed',
+        }
+    }
     // {
     //     noteId: utilsService.getRandomId(),
     //     type: 'noteAudio',

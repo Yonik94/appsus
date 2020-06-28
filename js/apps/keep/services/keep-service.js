@@ -8,6 +8,7 @@ export const keepService = {
     createNote,
     deleteNote,
     duplicateNote,
+    togglePinNote,
 }
 
 let gNotes;
@@ -66,7 +67,7 @@ function createNote(noteType, inputVal) {
             break;
     }
 
-    gNotes.unshift(newNote);
+    gNotes.push(newNote);
 
     utilsService.saveToStorage('notes', gNotes);
     return Promise.resolve(gNotes);
@@ -85,6 +86,16 @@ function duplicateNote(note) {
     note.noteId = utilsService.getRandomId();
     console.log({ note, gNotes })
     gNotes.splice(noteIdx + 1, 0, note);
+
+    utilsService.saveToStorage('notes', gNotes);
+    return Promise.resolve(gNotes);
+}
+
+function togglePinNote(note, idx) {
+    gNotes.splice(idx, 1);
+    if (note.isPinned) gNotes.unshift(note);
+    else gNotes.push(note);
+
 
     utilsService.saveToStorage('notes', gNotes);
     return Promise.resolve(gNotes);

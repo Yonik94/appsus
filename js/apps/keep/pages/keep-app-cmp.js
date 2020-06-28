@@ -11,7 +11,7 @@ export default {
             <main>
                 <note-create @createNote="createNote"></note-create>
                 <notes-list :notes="notes" @updateNote="updateNote" @deleteNote="deleteNote"
-                    @duplicateNote="duplicateNote"></notes-list>
+                    @duplicateNote="duplicateNote" @togglePinNote="togglePinNote"></notes-list>
             </main>
         </div>`,
     // @selectedNote="selectNote"
@@ -60,6 +60,10 @@ export default {
         },
         duplicateNote(note) {
             keepService.duplicateNote(note)
+                .then(notes => { this.notes = notes });
+        },
+        togglePinNote(note, idx) {
+            keepService.togglePinNote(note, idx)
                 .then(notes => { this.notes = notes });
         }
     }

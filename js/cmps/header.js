@@ -13,7 +13,7 @@ export default {
         <img class="email" src="./img/icons/email.svg" alt="">
             <h2 class="color-grey fw500">Email</h2>
             </div>
-            <router-link to="/" class="flex align-center"><h4 class="secondary-logo" title="Back to homepage">Appsus</h4></router-link>
+            <router-link to="/" class="flex align-center"><h4 class="secondary-logo" title="Back to Homepage">Appsus</h4></router-link>
             <router-link to="/keep" class="flex align-center " v-if="pagePath === 'email'" title="Go to Keep">
                 <img class="keep keep-display" src="./img/icons/keep.svg" alt="">
             </router-link> 
