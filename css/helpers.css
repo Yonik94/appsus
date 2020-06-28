@@ -335,6 +335,10 @@ textarea {
   color: #000;
 }
 
+.color-grey{
+  color: #999;
+}
+
 .no-border,
 .border-none {
   border: none;

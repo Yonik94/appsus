@@ -10,15 +10,17 @@
 }
 .email-compose textarea{
     resize: none;
+    font-size: 1.2rem;
 }
 
 .email-compose input{
     padding: 10px;
+    font-size: 1.2rem;
 }
 
 .email-compose button:nth-last-of-type(1){
     background-color: transparent;
-    padding: 5px;
+    padding: 15px 10px;
     border: 1px solid black;
     background-color: #1a73e8;
     color: white;
