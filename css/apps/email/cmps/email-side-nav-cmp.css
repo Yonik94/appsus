@@ -2,6 +2,7 @@
     padding-top: 20px;
     padding-inline-end: 16px;
     z-index: 1;
+    flex-grow: 1;
 }
 
 .compose-email-btn {

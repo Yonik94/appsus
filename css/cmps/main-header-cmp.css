@@ -17,16 +17,16 @@
 
 .main-header .keep {
     height: calc(2rem + 2vw);
-    margin: 15px 15px;
+    margin: 15px;
 }
 
 .main-header .email {
-    height: calc(2.6rem + 2.6vw);
-    margin: 0px 15px;
+    height: calc(2.6rem + 1.5vw);
+    margin: 15px;
 }
 
 .main-header .email-display{
-    height: calc(1.3rem + 1.3vw);
+    height: calc(2rem + 1vw);
 }
 .main-header .keep-display{
     height: calc(1.6rem + 1vw);

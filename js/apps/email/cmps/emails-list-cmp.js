@@ -9,7 +9,7 @@ import { eventBus } from '../../../services/event-bus-service.js';
 export default {
     name: 'emails-list',
     template:
-        `<main class="emails-list flex column">
+        `<main class="emails-list flex column full-height">
             <section class="filter-container flex mb1">
             <select @change="filterEmails" :ref="'filterEmails'">
             <option value="all">All</option>

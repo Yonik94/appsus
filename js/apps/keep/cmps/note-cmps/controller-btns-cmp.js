@@ -21,7 +21,6 @@ export default {
         },
         duplicateNote(update) {
             this.$emit('duplicateNote');
-            console.log(update)
         },
         forward() {
             console.log('Forward note hasn\'t implemented yet');
