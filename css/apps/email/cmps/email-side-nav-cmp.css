@@ -16,7 +16,6 @@
 .email-side-nav>*:not(:first-child) {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding-inline-end: 12px;
     padding-inline-start: 26px;
     height: 32px;

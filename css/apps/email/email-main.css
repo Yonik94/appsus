@@ -3,6 +3,7 @@
 @import '../email/cmps/email-list-cmp.css';
 @import '../email/cmps/email-preview-cmp.css';
 @import '../email/cmps/email-side-nav-cmp.css';
+@import '../email/cmps/email-details-cmp.css';
 /* BASE */
 *{
     padding: 0;

@@ -1,11 +1,13 @@
 import { keepService } from '../services/keep-service.js'
 import notesList from '../cmps/notes-list-cmp.js';
 import noteCreate from '../cmps/note-create-cmp.js';
+import  mainHeader  from '../../../cmps/header.js';
 
 export default {
     name: 'keep-app',
     template:
         `<main class="keep-app">
+            <main-header></main-header>
             <note-create @createNote="createNote"></note-create>
             <notes-list :notes="notes" @updateNote="updateNote" @deleteNote="deleteNote"
                 @duplicateNote="duplicateNote"></notes-list>
@@ -23,7 +25,8 @@ export default {
     },
     components: {
         notesList,
-        noteCreate
+        noteCreate,
+        mainHeader
     },
     methods: {
         // selectNote(note) {

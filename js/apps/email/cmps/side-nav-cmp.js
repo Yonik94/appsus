@@ -1,20 +1,27 @@
 import { eventBus } from '../../../services/event-bus-service.js';
-import { emailService } from '../services/email-service.js';
+// import { emailService } from '../services/email-service.js';
 
 export default {
     name: 'side-nav',
     template:
         `<nav class="email-side-nav flex column align-center email-side-nav">
-        <button @click="composeEmail" class="compose-email-btn flex align-center mb3" ><img class="mr3" src="img/icons/compose.png" alt=""> Compose</button>
+        <button @click="composeEmail" class="compose-email-btn flex align-center mb3" >
+        <img class="mr3" src="img/icons/compose.png" alt="">Compose</button>
         <router-link to="/email/inbox" :class="{selectedInbox: routeName === 'inbox'}">
-        Inbox <span></span>
+        <i class="fas fa-inbox pr3"></i> Inbox <span></span>
         </router-link>  
-        <router-link to="/email/starred" :class="{selectedFolder: routeName === 'starred'}">Starred</router-link> 
-        <router-link to="/email/sent" :class="{selectedFolder: routeName === 'sent'}">Sent</router-link> 
-        <router-link to="/email/drafts" :class="{selectedFolder: routeName === 'drafts'}">Drafts</router-link> 
-        <router-link to="/email/deleted" :class="{selectedFolder: routeName === 'deleted'}">Deleted</router-link> 
-        <router-link to="/email/all" :class="{selectedFolder: routeName === 'all'}">All Mail</router-link> 
+        <router-link to="/email/starred" :class="{selectedFolder: routeName === 'starred'}">
+        <i class="fas fa-star pr3"></i> Starred</router-link> 
+        <router-link to="/email/sent" :class="{selectedFolder: routeName === 'sent'}">
+        <i class="fas fa-share pr3"></i>Sent</router-link> 
+        <router-link to="/email/drafts" :class="{selectedFolder: routeName === 'drafts'}">
+        <i class="fas fa-file pr3"></i> Drafts</router-link> 
+        <router-link to="/email/deleted" :class="{selectedFolder: routeName === 'deleted'}">
+        <i class="fas fa-trash pr3"></i>Deleted</router-link> 
+        <router-link to="/email/all" :class="{selectedFolder: routeName === 'all'}">
+        <i class="fas fa-envelope pr3"></i>All mails</router-link> 
     </nav>`,
+    
     data() {
         return {
             isDraftOpen: false,

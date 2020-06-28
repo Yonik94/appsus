@@ -1,0 +1,23 @@
+.main-header {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.main-header .keep {
+    height: calc(4rem + 1vw);
+    margin: 15px 30px;
+}
+
+.main-header .email {
+    height: calc(5.2rem + 1.3vw);
+    margin: 0px 30px;
+}
+
+.main-header .email-display{
+    height: calc(1.3rem + 1.3vw);
+}
+.main-header .keep-display{
+    height: calc(1rem + 1vw);
+}
+
