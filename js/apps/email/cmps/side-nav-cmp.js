@@ -35,7 +35,7 @@ export default {
             eventBus.$emit('composeEmail')
             this.isDraftOpen = true
         },
-        openCloseHamburger(){
+        openCloseHamburger() {
             this.$emit('changeHamburger')
         }
     },
@@ -43,7 +43,7 @@ export default {
         eventBus.$on('closeDraft', () => {
             this.isDraftOpen = false;
         })
-        eventBus.$on('isHumburgerOpen', (status) => {this.openCloseNav(status)})
+        eventBus.$on('isHumburgerOpen', (status) => { this.openCloseNav(status) })
     },
     watch: {
         '$route'(to, from) {
