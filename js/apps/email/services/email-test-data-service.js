@@ -57,12 +57,12 @@ const gEmails = [
     },
     {
         emailId: utilsService.getRandomId(),
-        from: 'Japanika@japanika.net',
+        from: 'natali@japanika.net',
         subject: `Yoni, anything I can help with?`,
         body:
             `Hey Yoni,
 
-            It's japanika here with INSERT COMPANY. You’ve been using our services for awhile, so I wanted to check in to see how things are going
+            It's Natali here with Japanika. You’ve been using our services for awhile, so I wanted to check in to see how things are going
 
             So, what questions can I answer? What features can I demo? What issues can I solve?
             

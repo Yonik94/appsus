@@ -21,15 +21,17 @@
     height: calc(1rem + 1vw);
 }
 .main-header .hamburger{
-    display: none;
+    visibility: hidden;
+    align-items: center;
+    margin: 0px 10px 0 20px;
+    font-size: 25px;
+    color: #666;
+    cursor: pointer;
 }
 
 @media (max-width: 700px) {
     .main-header .hamburger{
-        display: flex;
-        align-items: center;
-        margin: 0px 15px;
-        font-size: 50px;
+        visibility: visible;
     }
 }
 
