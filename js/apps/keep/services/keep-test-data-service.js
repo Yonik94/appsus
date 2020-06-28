@@ -21,7 +21,7 @@ const gNotes = [
              dad: 050-7654321`
         },
         style: {
-            backgroundColor: 'blue'
+            backgroundColor: 'rgb(174, 203, 250)'
         }
     },
     {
@@ -62,7 +62,7 @@ const gNotes = [
             ]
         },
         style: {
-            backgroundColor: 'yellow'
+            backgroundColor: 'rgb(204, 255, 144)'
         },
     },
     {
@@ -87,7 +87,7 @@ const gNotes = [
             txt: `Solved.`
         },
         style: {
-            backgroundColor: 'pink'
+            backgroundColor: 'rgb(204, 255, 144)'
         }
     },
     // {

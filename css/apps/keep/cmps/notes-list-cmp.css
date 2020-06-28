@@ -1,11 +1,28 @@
+/* .notes-list-container {
+} */
+
 .note {
   max-width: 312px;
   margin: 4px;
   border-radius: 8px;
-  padding: 12px 16px;
+  border: 1px solid;
+  /* padding: 12px 16px; */
 }
+
 .note:hover {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.6), 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+}
+
+.note p, .note label {
+  font-size: 0.875rem;
+}
+
+.note li {
+  padding: 0 16px;
+}
+
+.note button {
+  background-color: transparent;
 }
 
 [contentEditable='true'] {
@@ -18,8 +35,6 @@
   color: #aaa;
   font-weight: 300;
 }
-
-li.active > [contentEditable='true']:focus {
-  border-top: 1px solid #aaa;
-  border-bottom: 1px solid #aaa;
+.note li:hover, .note h4:hover {
+  box-shadow: 0 0.5px 0 #aaa, 0 -0.5px 0 #aaa;
 }

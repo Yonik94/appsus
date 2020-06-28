@@ -2,23 +2,33 @@ import noteTxt from './note-cmps/note-txt-cmp.js';
 import noteImg from './note-cmps/note-img-cmp.js';
 import noteTodos from './note-cmps/note-todos-cmp.js';
 import noteVideo from './note-cmps/note-video-cmp.js';
+import controllerBtns from './note-cmps/controller-btns-cmp.js';
 
 export default {
     name: 'notes-list',
     props: ['notes'],
     template:
-        `<main>
-            <article v-for="note in notes">
+        `<main class="notes-list-container">
+            <div v-for="note in notes">
+                <article class="note" :style="{ backgroundColor: note.style.backgroundColor, borderColor: note.style.backgroundColor }">
+                    <i class="fas fa-thumbtack"></i>
+                    <h4 @blur="updateNote($event ,'title')" @keydown.116="updateNote($event ,'title')"
+                        contenteditable="true" data-ph="Title" class="inline">{{ note.title }}</h4>
+
                     <component :is="note.type" :note="note" @updateNote="updateNote" @deleteNote="deleteNote"
-                        @duplicateNote="duplicateNote" style="border: 1px solid black"></component>
-            </article>
+                        @duplicateNote="duplicateNote"></component>
+
+                    <controller-btns @deleteNote="deleteNote"  @duplicateNote="duplicateNote"></controller-btns>
+                </article>
+            </div>
         </main>`,
         // @click="selectNote(note)"
     components: {
         noteTxt,
         noteImg,
         noteTodos,
-        noteVideo
+        noteVideo,
+        controllerBtns
     },
     methods: {
         // selectNote(note) {

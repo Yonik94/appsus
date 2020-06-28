@@ -3,10 +3,12 @@ export default {
     template:
         `<main class="home-container full-height flex column justify-center align-center">
         <transition name="hard-slide-fade">
-            <div v-show="pageLoad" class="flex grow3 align-end">
-            <h2 class="logo flex">Appsus</h2>
+            <div v-show="pageLoad" class="flex column grow4 justify-end align-center">
+            <h2 class="main-logo flex">Appsus</h2>
+            <p class="color-white fw300 italic p3 text-center">&ldquo;For every minute spent organizing, an hour is earned.&ldquo;</p>
             </div>
         </transition>
+
 
             <transition name="slide-fade">
             <div v-show="pageLoad" class="flex align-center grow">

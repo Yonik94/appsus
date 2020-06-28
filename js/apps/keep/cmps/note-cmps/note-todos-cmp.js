@@ -1,35 +1,31 @@
 import { keepService } from '../../services/keep-service.js';
-import controllerBtns from './controller-btns-cmp.js';
 import { utilsService } from '../../../../services/utils-service.js';
 
 export default {
     name: 'note-todos',
     props: ['note'],
     template:
-        `<article class="note" :style="{ backgroundColor: note.style.backgroundColor }">
-            <button><i class="fas fa-thumbtack"></i></button>
-            <h4 @blur="updateNote($event ,'title')" @keydown.116="updateNote($event ,'title')"
-                contenteditable="true" data-ph="Title" class="inline">{{ note.title }}</h4>
-
-            <ul class="clean-list">
+        `<ul class="clean-list">
                 <li>
                     <i class="far fa-plus-square"></i>
                     <input v-model="newTodoLineTxt" @keyup.enter="addTodoLine" @blur="addTodoLine" ref="inputNewTodo"
                         placeholder="Insert item" type="text" class="bg-transparent no-border" />
                 </li>
 
-                <li v-for="(todo, idx) in note.info.todos" :key="todo.todoId"> 
-                    <input v-model="todo.isDone" @input="updateNote" type="checkbox" tabindex="-1">
+                <li v-for="(todo, idx) in note.info.todos" :key="todo.todoId" class="flex space-between"> 
+                <label>
+                    <input v-model="todo.isDone" @input="updateNote" type="checkbox" class="hidden" tabindex="-1">
+                    <div class="checkbox"></div>
+                </label>
+
                     <label @blur="updateNote($event, 'txt', idx)" @keydown.enter.prevent="splitTodoLine($event, idx)"
-                        :class="{cross: todo.isDone}" @keydown.116="updateNote($event, 'txt', idx)" contenteditable="true">{{ todo.txt }}</label>
+                        :class="{cross: todo.isDone}" @keydown.116="updateNote($event, 'txt', idx)" contenteditable="true" class="grow todo-txt-line">{{ todo.txt }}</label>
                     
                     <button @click="deleteTodoLine(idx)" tabindex="-1">
                         <i class="fas fa-times"></i>
                     </button>
                 </li>
-            </ul>          
-            <controller-btns @deleteNote="deleteNote"  @duplicateNote="duplicateNote"></controller-btns>
-        </article>`,
+            </ul>`,
     // <button v-if="idx !== 0" @click="moveTodoLine(idx, -1)"><i class="fas fa-chevron-up"></i></button>
     // <button v-if="idx !== note.info.todos.length - 1" @click="moveTodoLine(idx, 1)"><i class="fas fa-chevron-down"></i></button>
     data() {
@@ -41,9 +37,6 @@ export default {
     // created() {
     //     this.note = this.initialNote;
     // },
-    components: {
-        controllerBtns
-    },
     // watch: {
     //     note: {
     //       handler() {

@@ -2,7 +2,7 @@ export default {
     name: 'about',
     template:
     `<main>
-        <h2 class="center">About</h2>
+        <h2 class="text-center">About</h2>
         <div class="flex space-around">
         <article class="inline">
             <img src="../../img/team/yoni-portrait.jpg" />
