@@ -2,13 +2,19 @@
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
+    flex-wrap: wrap;
 }
 
 .about article {
+    min-width: 320px;
     flex-basis: 50%;
 }
 
+.about article div:first-of-type{
+    
+}
 .about img {
+    margin: 0 auto;
     border-radius: 50%;
     width: 100%;
     max-width: 200px;

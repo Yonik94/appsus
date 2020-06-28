@@ -16,7 +16,7 @@ export default {
         `<main class="flex column" :class="{'toggle-nav': isMenuOpen}">
             <main-header @changeHamburger="openCloseMenu"></main-header>
             <section class="email-main-container flex">
-                <email-side-nav @changeHamburger="openCloseMenu"></email-side-nav>
+                <email-side-nav @changeHamburger="openCloseMenu" class="flex column"></email-side-nav>
                 <router-view class="grow" />
                 <email-compose v-show="isDraftOpen" :open="isDraftOpen"></email-compose>
             </section>

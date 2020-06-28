@@ -11,7 +11,7 @@ function query() {
 const gEmails = [
     {
         emailId: utilsService.getRandomId(),
-        from: 'Assaf-Margalit@gmail.com',
+        from: 'Dudi-Gozlan@gmail.com',
         subject: `Let's get back together`,
         body:
             `Hey babe,
@@ -111,7 +111,7 @@ const gEmails = [
 
             I hope you're doing well. I was hoping we could hop on the phone soon to get a better idea of what you're interested and what I can do to help.
             
-            Are you available on Monday between INSERT TIME? Please let me know if there's a more convenient time. Also, is {{ contact_phone_number | fallback: "" }} still your preferred number?
+            Are you available on Monday between INSERT TIME? Please let me know if there's a more convenient time. Also, is still your preferred number?
             
             Looking forward to connecting soon,`,
         sentAt: 1552991114000,
@@ -199,7 +199,7 @@ const gEmails = [
         body:
             `Hi Tal,
 
-            Thank you for reaching out. After focusing on your needs, I believe I may know someone who may be a better fit for your situation. CC’d here is my colleague, INSERT NAME, who has INSERT # OF YEARS OF EXPERIENCE years of experience representing clients in your situation.
+            Thank you for reaching out. After focusing on your needs, I believe I may know someone who may be a better fit for your situation. CC’d here is my colleague, who has 9 years of experience representing clients in your situation.
             
             Although I have filled in INSERT NAME based on our previous communication, the best next step would be to arrange a time in order to thoroughly describe your needs.
             
@@ -251,6 +251,170 @@ const gEmails = [
         folder: 'sent',
         status: {
             isRead: true,
+            isStarred: true,
+            isDeleted: false
+        }
+    },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'me@gmail.com',
+        to: 'Muki@walla.com',
+        subject: `I'm sooooooo sorry!`,
+        body:
+            `Puki,
+
+            I don't know what to say. I realize I messed up bad ... like really really bad and I'm so so sorry. I promise it will never happen again.
+            
+            When I realized the type of position I had put you in and that I was risking your heart, I was so ashamed. I love you so much and that's never going to change.
+            
+            Is it even possible that you could forgive me?
+            
+            Forever and Always,
+            
+            `,
+        sentAt: 1552991114000,
+        folder: 'sent',
+        status: {
+            isRead: true,
+            isStarred: true,
+            isDeleted: false
+        }
+    },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'me@gmail.com',
+        to: 'Muki@walla.com',
+        subject: `Help out this small fish?`,
+        body:
+            `Hey Goo,
+
+            Hope you’re having a lovely day. Just wanted to send along a quick email to say thanks for working with me. As a small fish in a big pond, it’s sometimes hard for me to compete with the larger fish, so I really appreciate you and your business!
+            
+            Additionally, to keep me swimming, can you think of 1 person in your neighborhood or office who may need help that I could provide? If so, I’d love to meet them.
+            
+            Thank you, thank you, thank you!
+            
+            `,
+        sentAt: 1552991114000,
+        folder: 'inbox',
+        status: {
+            isRead: true,
+            isStarred: true,
+            isDeleted: false
+        }
+    },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'me@gmail.com',
+        to: 'Muki@walla.com',
+        subject: `Hi baby, just touching base`,
+        body:
+            `Hey,
+
+            I know we haven't spoken in a while, so I just wanted to touch base. As always, I'm here as a resource for you, so just let me know if you have any questions about new features, best practices, or anything in between!
+            
+            As soon as you run into a question or concern, please let me know by email or you can call.
+            
+            If you're having a great experience with so far, would you be interested in referring us to your network?
+            
+            Kindly,
+            
+            `,
+        sentAt: 1552991114000,
+        folder: 'inbox',
+        status: {
+            isRead: true,
+            isStarred: true,
+            isDeleted: false
+        }
+    },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'me@gmail.com',
+        to: 'Muki@walla.com',
+        subject: `I want Fluffy back.`,
+        body:
+            `My dearest Muka,
+
+            Without you, a piece of me is missing. In fact, many pieces are missing — my iPod, my blender, at least 13 t-shirts, every comfortable sweater I own, my pet gerbil Fluffy, and my dignity.
+            
+            You may have killed our relationship, but I won’t allow Fluffy to suffer the same fate. I expect to see a neatly packed bag of my belongings and a fully fed and watered gerbil on my doorstep by this weekend. If you haven’t deleted my phone number, call me tonight so I can sing lullabies to Fluffy.
+            
+            `,
+        sentAt: 1552991114000,
+        folder: 'inbox',
+        status: {
+            isRead: true,
+            isStarred: true,
+            isDeleted: false
+        }
+    },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'me@gmail.com',
+        to: 'Muki@walla.com',
+        subject: `Quote`,
+        body:
+            `Hi!
+
+            Thanks for reaching out — we appreciate your consideration. After reviewing your needs and discussing internally, we estimate that the cost for providing these specific services will be approximately ahava which is represents 50 at 30$.
+            
+            If you would like to proceed — or have any questions about the cost estimate — please feel free to arrange a call or ask me directly. We look forward to potentially working with you. Please let me know if there is anything I can do for you.
+            
+            Hope this helps.
+            
+            Best,
+            `,
+        sentAt: 1552991114000,
+        folder: 'inbox',
+        status: {
+            isRead: true,
+            isStarred: true,
+            isDeleted: false
+        }
+    },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'me@gmail.com',
+        to: 'bobo@linkedin.com',
+        subject: `Thank You for Your LinkedIn Endorsement`,
+        body:
+            `Hi,
+
+            Thank you for your endorsement on LinkedIn. As a person who gives professional advice to other people, I rely on what my peers, customers and partners are saying about me and the value I bring to each of you.
+            
+            I appreciate the fact that you took the time to make that investment in me, please let me know if there is something I can do for you in return.
+            
+            All the best,
+            `,
+        sentAt: 1552991114000,
+        folder: 'inbox',
+        status: {
+            isRead: true,
+            isStarred: true,
+            isDeleted: false
+        }
+    },
+    {
+        emailId: utilsService.getRandomId(),
+        from: 'me@gmail.com',
+        to: 'Tal@gmail.com',
+        subject: `Great to Meet You!`,
+        body:
+            `Hey Yoni,
+
+            It was great to meet you at the Open House this past weekend. I really enjoyed showing you the home!
+            
+            What did you think of the property? Was there anything missing? And How soon are you interested in buying a home?
+            
+            Let me know because I would love to show you some other options that may be what you are looking for!
+            
+            Looking forward to hearing from you,
+            `,
+        sentAt: 1552991114000,
+        folder: 'inbox',
+        status: {
+            isRead: false,
             isStarred: true,
             isDeleted: false
         }
