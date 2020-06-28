@@ -4,6 +4,7 @@
 @import '../email/cmps/email-preview-cmp.css';
 @import '../email/cmps/email-side-nav-cmp.css';
 @import '../email/cmps/email-details-cmp.css';
+@import '../email/cmps/email-compose-cmp.css';
 /* BASE */
 *{
     padding: 0;

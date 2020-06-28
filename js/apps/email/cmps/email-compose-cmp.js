@@ -5,8 +5,8 @@ export default {
     name: 'email-compose',
     props: ['open'],
     template:
-        `<section>
-        <button @click.self="closeDraft">X</button>
+        `<section class="email-compose flex column">
+        <button @click.self="closeDraft"><i class="fas fa-times"></i></button>
         <input @input="updateDraft" @blur="updateEmails" v-model="emailTo" type="email" placeholder="To:"></input>
         <input @input="updateDraft" @blur="updateEmails" v-model="emailSubject" type="text" placeholder="Subject"></input>
         <textarea @input="updateDraft" @blur="updateEmails" v-model="emailBody" name="body" id="" cols="30" rows="10">
