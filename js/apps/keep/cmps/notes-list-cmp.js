@@ -8,21 +8,23 @@ export default {
     name: 'notes-list',
     props: ['notes'],
     template:
-        `<main class="notes-list-container">
+        `<section class="notes-list-container flex wrap justify-center">
             <div v-for="note in notes">
                 <article class="note" :style="{ backgroundColor: note.style.backgroundColor, borderColor: note.style.backgroundColor }">
-                    <i class="fas fa-thumbtack"></i>
-                    <h4 @blur="updateNote($event ,'title')" @keydown.116="updateNote($event ,'title')"
-                        contenteditable="true" data-ph="Title" class="inline">{{ note.title }}</h4>
+                    <div class="flex note-title-container">
+                        <i class="fas fa-thumbtack"></i>
+                        <h4 @blur="updateTitle($event, note)" @keydown.116="updateTitle($event, note)"
+                            @keydown.enter.prevent contenteditable="true" data-ph="Title">{{ note.title }}</h4>
+                    </div>
 
                     <component :is="note.type" :note="note" @updateNote="updateNote" @deleteNote="deleteNote"
                         @duplicateNote="duplicateNote"></component>
 
-                    <controller-btns @deleteNote="deleteNote"  @duplicateNote="duplicateNote"></controller-btns>
+                    <controller-btns @deleteNote="deleteNote(note.noteId)" @duplicateNote="duplicateNote(note)"
+                        @changeNoteColor="changeNoteColor($event ,note)"></controller-btns>
                 </article>
             </div>
-        </main>`,
-        // @click="selectNote(note)"
+        </section>`,
     components: {
         noteTxt,
         noteImg,
@@ -31,10 +33,6 @@ export default {
         controllerBtns
     },
     methods: {
-        // selectNote(note) {
-        //     console.log({ noteId: note.noteId }); // To Delete
-        //     this.$emit('selectedNote', note);
-        // },
         updateNote(note) {
             this.$emit('updateNote', note);
         },
@@ -43,6 +41,15 @@ export default {
         },
         duplicateNote(note) {
             this.$emit('duplicateNote', note)
+        },
+        updateTitle(ev, note) {
+            const value = ev.target.innerText;
+            note.title = value;
+            this.$emit('updateNote', note);
+        },
+        changeNoteColor(color, note) {
+            note.style.backgroundColor = color;
+            this.updateNote(note);
         }
     }
 }

@@ -1,0 +1,37 @@
+.controller-btns {
+    padding: 4px;
+    opacity: 0;
+    transition: opacity .3s;
+}
+.controller-btns button {
+    height: 2rem;
+    width: 2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.controller-btns button:hover {
+    background-color: rgb(170, 170, 170, .3);
+}
+
+.note:hover .controller-btns {
+    opacity: 1;
+}
+
+.note-colors {
+    width: 5rem;
+    padding: 0.1rem;
+    box-shadow: 0 0 7px rgba(0, 0, 0, .2);
+    border-radius: 3px;
+    top: 1rem;
+    opacity: 0;
+    transition: opacity .1s;
+}
+.note-colors i {
+    font-size: 1rem;
+    margin: 0.1rem;
+}
+
+.note-palette:hover .note-colors {
+    opacity: 1;
+}

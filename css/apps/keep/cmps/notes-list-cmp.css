@@ -1,8 +1,11 @@
-/* .notes-list-container {
-} */
+@media (min-width: 961px) {
+  .notes-list-container {
+    justify-content: initial !important;
+  }
+}
 
 .note {
-  max-width: 312px;
+  width: 312px;
   margin: 4px;
   border-radius: 8px;
   border: 1px solid;
@@ -13,8 +16,30 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.6), 0 1px 3px 1px rgba(0, 0, 0, 0.3);
 }
 
-.note p, .note label {
+.note p,
+.note label {
   font-size: 0.875rem;
+}
+
+.note p {
+  padding: 0 16px;
+}
+
+.note img {
+  margin-bottom: 12px;
+}
+
+.note-title-container {
+  margin: 12px 0;
+  padding: 0 16px;
+}
+
+.note h4 {
+  font-weight: 500;
+  padding-inline-start: 0.5em;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 .note li {
@@ -32,9 +57,6 @@
 
 [contentEditable='true']:empty:not(:focus):before {
   content: attr(data-ph);
-  color: #aaa;
+  opacity: 0.5;
   font-weight: 300;
-}
-.note li:hover, .note h4:hover {
-  box-shadow: 0 0.5px 0 #aaa, 0 -0.5px 0 #aaa;
 }

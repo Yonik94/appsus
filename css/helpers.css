@@ -4,13 +4,15 @@
 
 /* resets */
 
-button, select {
+button,
+select {
   cursor: pointer;
   outline: none;
   font-family: inherit;
 }
 
-input, textarea {
+input,
+textarea {
   outline: none;
   font-family: inherit;
 }
@@ -76,23 +78,25 @@ input, textarea {
   flex-wrap: wrap-reverse;
 }
 
-.flex>.grow, .flex>.grow1 {
+.flex > .grow,
+.flex > .grow1 {
   flex-grow: 1;
 }
 
-.flex>.grow, .flex>.grow1 {
+.flex > .grow,
+.flex > .grow1 {
   flex-grow: 1;
 }
 
-.flex>.grow2 {
+.flex > .grow2 {
   flex-grow: 2;
 }
 
-.flex>.grow3 {
+.flex > .grow3 {
   flex-grow: 3;
 }
 
-.flex>.grow4 {
+.flex > .grow4 {
   flex-grow: 4;
 }
 
@@ -106,7 +110,15 @@ input, textarea {
   display: inline;
 }
 
-.inline-list>li {
+.relative {
+  display: relative;
+}
+
+.absolute {
+  display: absolute;
+}
+
+.inline-list > li {
   display: inline;
 }
 
@@ -285,7 +297,7 @@ input, textarea {
 }
 
 .bg-grey {
-  background-color: #f5f7f7
+  background-color: #f5f7f7;
 }
 .bg-transparent {
   background-color: transparent;
@@ -299,7 +311,8 @@ input, textarea {
   color: #000;
 }
 
-.no-border, .border-none {
+.no-border,
+.border-none {
   border: none;
 }
 

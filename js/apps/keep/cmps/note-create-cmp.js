@@ -2,10 +2,10 @@
 
 export default {
     template:
-    `<section class="flex" style="border: 1px solid #aaa">
+    `<section class="flex note-create-bar">
         <i v-if="noteType === 'noteTodos'" class="far fa-plus-square"></i>
         <input v-model="inputVal" @blur="createNote" @keyup.enter="createNote" @enter="createNote"
-            :placeholder="placeholder" class="bg-transparent no-border" type="text" />
+            :placeholder="placeholder" class="bg-transparent no-border grow" type="text" />
         <button @click="switchNoteType('noteTxt')"><i class="fas fa-paragraph"></i></button>       
         <button @click="switchNoteType('noteTodos')"><i class="far fa-check-square"></i></i></button>       
         <button @click="switchNoteType('noteImg')"><i class="far fa-image"></i></button>       

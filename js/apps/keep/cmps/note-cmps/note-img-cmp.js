@@ -5,9 +5,14 @@ export default {
     template:
         `<div>
             <img style="width:100%" :src="note.info.imgUrl" alt="">
-            <p>{{ note.info.txt }}</p>
+            <p @blur="updateTxt($event)" @keydown.116="updateTxt($event)" @keydown.enter.prevent contenteditable="true">{{ note.info.txt }}</p>
         </div>`,
-    components: {
-        controllerBtns
+    methods: {
+        updateTxt(ev) {
+            const value = ev.target.innerText;
+            this.note.info.txt = value;
+
+            this.$emit('updateNote', this.note);
+        },
     }
 }

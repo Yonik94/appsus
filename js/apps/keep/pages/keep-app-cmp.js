@@ -5,12 +5,14 @@ import noteCreate from '../cmps/note-create-cmp.js';
 export default {
     name: 'keep-app',
     template:
-        `<main class="keep-app">
-            <note-create @createNote="createNote"></note-create>
-            <notes-list :notes="notes" @updateNote="updateNote" @deleteNote="deleteNote"
-                @duplicateNote="duplicateNote"></notes-list>
-            </main>`,
-            // @selectedNote="selectNote"
+        `<div class="keep-app-container">
+            <main>
+                <note-create @createNote="createNote"></note-create>
+                <notes-list :notes="notes" @updateNote="updateNote" @deleteNote="deleteNote"
+                    @duplicateNote="duplicateNote"></notes-list>
+            </main>
+        </div>`,
+    // @selectedNote="selectNote"
     data() {
         return {
             notes: null,
