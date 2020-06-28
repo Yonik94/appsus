@@ -1,7 +1,43 @@
-nav.email-side-nav{
-    width: 500px;
+.email-side-nav{
+    padding-inline-end: 16px;
 }
-nav button{
+
+.compose-email-btn {
     background-color: transparent;
-    padding: 10px;
+    padding: 0.5em 2em 0.5em 1.5em;
+    border-radius: 5em;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+}
+
+.compose-email-btn:hover {
+    box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302), 0 4px 8px 3px rgba(60, 64, 67, 0.149);
+}
+
+.email-side-nav>*:not(:first-child) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline-end: 12px;
+    padding-inline-start: 26px;
+    height: 32px;
+    width: 240px;
+    border-radius: 0 16px 16px 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+}
+
+.email-side-nav>*:not(.selectedInbox):not(:first-child):hover{
+    background-color: rgb(241, 243, 244);
+}
+
+.email-side-nav>*.selectedInbox{
+    background-color: #fce8e6;
+    color: #d93025;
+    font-weight: bold;
+}
+
+.email-side-nav>*.selectedFolder{
+    background-color: #e8eaed;
+    font-weight: bold;
 }

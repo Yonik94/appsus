@@ -4,8 +4,7 @@
 
 /* resets */
 
-button,
-select {
+button, select {
   cursor: pointer;
   outline: none;
   font-family: inherit;
@@ -107,7 +106,7 @@ input, textarea {
   display: inline;
 }
 
-.inline-list > li {
+.inline-list>li {
   display: inline;
 }
 
@@ -169,6 +168,77 @@ input, textarea {
   padding: 3em;
 }
 
+.mb1 {
+  margin-bottom: 0.25em;
+}
+
+.mb2 {
+  margin-bottom: 0.5em;
+}
+
+.mb3 {
+  margin-bottom: 0.75em;
+}
+
+.mb4 {
+  margin-bottom: 1em;
+}
+
+.mb5 {
+  margin-bottom: 2em;
+}
+
+.mb6 {
+  margin-bottom: 3em;
+}
+
+.ml1 {
+  margin-inline-start: 0.25em;
+}
+
+.ml2 {
+  margin-inline-start: 0.5em;
+}
+
+.ml3 {
+  margin-inline-start: 0.75em;
+}
+
+.ml4 {
+  margin-inline-start: 1em;
+}
+
+.ml5 {
+  margin-inline-start: 2em;
+}
+
+.ml6 {
+  margin-inline-start: 3em;
+}
+
+.mr1 {
+  margin-inline-end: 0.25em;
+}
+
+.mr2 {
+  margin-inline-end: 0.5em;
+}
+
+.mr3 {
+  margin-inline-end: 0.75em;
+}
+
+.mr4 {
+  margin-inline-end: 1em;
+}
+
+.mr5 {
+  margin-inline-end: 2em;
+}
+
+.mr6 {
+  margin-inline-end: 3em;
+}
 
 /* text */
 
@@ -210,6 +280,13 @@ input, textarea {
 
 /* colors */
 
+.bg-white {
+  background-color: white;
+}
+
+.bg-grey {
+  background-color: #f5f7f7
+}
 .bg-transparent {
   background-color: transparent;
 }

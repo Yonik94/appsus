@@ -19,7 +19,7 @@ export default {
     template:
         `<main class="flex column">
             <header>Insert header component here</header>
-            <section class="flex">
+            <section class="email-main-container flex">
                 <email-side-nav></email-side-nav>
                 <router-view />
                 <email-compose v-show="isDraftOpen" :open="isDraftOpen"></email-compose>

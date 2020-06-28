@@ -13,7 +13,8 @@ export const emailService = {
     createDraft,
     updateDraft,
     deleteEmail,
-    getEmails
+    getEmails,
+    // getUnreadEmailsNum
 }
 
 let gEmails;
@@ -155,11 +156,23 @@ function deleteEmail(emailId) {
         });
 }
 
-function getEmails(ByText) {
-    const emailsByText = gEmails.filter(email => {
-       return (email.subject.toLowerCase().includes(ByText.toLowerCase())
-       || email.body.toLowerCase().includes(ByText.toLowerCase())
-       || email.from.toLowerCase().includes(ByText.toLowerCase()))
+function getEmails(ByText, emails) {
+    const emailsByText = emails.filter(email => {
+        return (email.subject.toLowerCase().includes(ByText.toLowerCase())
+            || email.body.toLowerCase().includes(ByText.toLowerCase())
+            || email.from.toLowerCase().includes(ByText.toLowerCase()))
     })
     return Promise.resolve(emailsByText)
 }
+
+// function getUnreadEmailsNum(folderName) {
+
+//     let unreadCounter = 0
+//     return queryByFolder(folderName)
+//         .then(emails => {
+//             emails.forEach(email => {
+//                 if (!email.status.isRead) unreadCounter++
+//             })
+//             return unreadCounter
+//         })
+// }
