@@ -29,7 +29,8 @@
     height: calc(1.3rem + 1.3vw);
 }
 .main-header .keep-display{
-    height: calc(1rem + 1vw);
+    height: calc(1.6rem + 1vw);
+    margin: 0px 15px;
 }
 .main-header .hamburger{
     display: none;

@@ -1,4 +1,5 @@
 import { emailService } from '../services/email-service.js';
+import { eventBus } from '../../../services/event-bus-service.js';
 
 export default {
     props: ['email'],
@@ -13,11 +14,6 @@ export default {
             <div class="email-subject">{{ email.subject }} &nbsp;-&nbsp; <span class="fw400 email-body">{{ email.body }}</span></div>
             <div class="email-sent-at">{{ getEmailDetails.sentAt }}</div>
     </li>`,
-    data(){
-        return {
-
-        }
-    },
     computed: {
         getEmailDetails() {
             return {
@@ -36,5 +32,13 @@ export default {
         selectEmail(){
             this.$emit('emailSelected', this.$refs.checkbox.checked, this.email.emailId)
         }
+    },
+    created(){
+        eventBus.$on('emailsDeleted', () => {
+            this.$refs.checkbox.checked = false
+        })
+        eventBus.$on('selectedEmailsUnread', () => {
+            this.$refs.checkbox.checked = false
+        })
     }
 }

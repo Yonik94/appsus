@@ -1,21 +1,39 @@
-.email-details{
+.email-details {
     padding: 0 100px 0 10px;
 }
 
-.email-details .email-subject{
-   padding: 10px 0px ;
+.email-details .email-subject {
+    padding: 10px 0px;
 }
 
-.email-details .sender-details{
+.email-details .sender-details {
     padding: 5px 0;
 }
 
-.email-details .email-from{
+.email-details .email-from {
     color: #555555;
     font-weight: unset;
     width: fit-content;
 }
 
-.email-details .email-body{
+.email-details .email-body {
     max-width: 880px;
+}
+
+.email-details button {
+    height: 2rem;
+    width: 2rem;
+    padding: 0.1rem;
+    border-radius: 50%;
+    background-color: transparent;
+
+}
+
+.email-details button:hover {
+    background-color: rgb(170, 170, 170, 0.3);
+}
+
+.email-details button i {
+    font-size: 1rem;
+    margin: 0.1rem;
 }
