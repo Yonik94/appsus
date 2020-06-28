@@ -39,7 +39,7 @@ export default {
         createNote() {
             if (!this.inputVal) return;
             this.$emit('createNote', this.noteType, this.inputVal);
-            this.noteType = '';
+            this.inputVal = '';
         }
     }
 }
