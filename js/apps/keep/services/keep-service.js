@@ -45,7 +45,7 @@ function createNote(noteType, inputVal) {
         title: '',
         info: {},
         style: {
-            backgroundColor: '#fff'
+            backgroundColor: 'rgba(255, 255, 255)'
         }
     }
     switch (noteType) {

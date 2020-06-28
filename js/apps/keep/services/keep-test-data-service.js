@@ -18,10 +18,10 @@ const gNotes = [
         info: {
             txt:
                 `mom: 050-1234567
-             dad: 050-7654321`
+                dad: 050-7654321`
         },
         style: {
-            backgroundColor: 'rgb(174, 203, 250)'
+            backgroundColor: 'rgb(232, 234, 237)'
         }
     },
     {
@@ -34,7 +34,7 @@ const gNotes = [
             txt: `it's so cute!`
         },
         style: {
-            backgroundColor: 'pink'
+            backgroundColor: 'rgb(255, 244, 117)'
         }
     },
     {
@@ -74,7 +74,7 @@ const gNotes = [
             videoUrl: 'https://www.youtube.com/embed/Mus_vwhTCq0'
         },
         style: {
-            backgroundColor: 'black'
+            backgroundColor: 'rgb(174, 203, 250)'
         }
     },
     {
@@ -87,7 +87,7 @@ const gNotes = [
             txt: `Solved.`
         },
         style: {
-            backgroundColor: 'rgb(204, 255, 144)'
+            backgroundColor: 'rgb(215, 174, 251)'
         }
     },
     // {

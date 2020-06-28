@@ -4,8 +4,8 @@
 
 /* Style the artificial checkbox */
 .checkbox {
-  height: 13.5px;
-  width: 13.5px;
+  height: 14px;
+  width: 14px;
   border: 1.5px solid #666;
   border-radius: 2.5px;
   display: inline-block;
@@ -15,7 +15,7 @@
 }
 
 /* Style its checked state...with a ticked icon */
-[type=checkbox]:checked + .checkbox:before {
+[type='checkbox']:checked + .checkbox:before {
   content: '\2714';
   color: #666;
   position: absolute;
@@ -28,4 +28,25 @@
 .todo-txt-line {
   padding: 2px 10px;
   overflow: auto;
+}
+
+.note li:first-child i {
+  opacity: 0.5;
+  cursor: text;
+}
+
+.note input {
+  padding: 0 5px;
+}
+
+.note li:hover {
+  box-shadow: 0 0.5px 0 #aaa, 0 -0.5px 0 #aaa;
+}
+
+.note li i:last-child {
+  opacity: .5;
+}
+
+.note li i:last-child:hover {
+  opacity: 1;
 }

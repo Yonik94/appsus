@@ -6,13 +6,15 @@ import  mainHeader  from '../../../cmps/header.js';
 export default {
     name: 'keep-app',
     template:
-        `<main class="keep-app">
+        `<div class="keep-app-container">
             <main-header></main-header>
-            <note-create @createNote="createNote"></note-create>
-            <notes-list :notes="notes" @updateNote="updateNote" @deleteNote="deleteNote"
-                @duplicateNote="duplicateNote"></notes-list>
-            </main>`,
-            // @selectedNote="selectNote"
+            <main>
+                <note-create @createNote="createNote"></note-create>
+                <notes-list :notes="notes" @updateNote="updateNote" @deleteNote="deleteNote"
+                    @duplicateNote="duplicateNote"></notes-list>
+            </main>
+        </div>`,
+    // @selectedNote="selectNote"
     data() {
         return {
             notes: null,
