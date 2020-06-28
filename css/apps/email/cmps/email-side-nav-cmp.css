@@ -50,4 +50,7 @@
         position: absolute;
         z-index: 1;
     }
+    .toggle-nav .email-side-nav{
+        display: block;
+    }
 }

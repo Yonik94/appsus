@@ -15,7 +15,6 @@ export const emailService = {
     deleteEmail,
     getEmails,
     getEmailsbyReadingStatus,
-    // getUnreadEmailsNum
 }
 
 let gEmails;
@@ -170,15 +169,3 @@ function getEmailsbyReadingStatus(status, emails){
    const filteredEmails = emails.filter(email => email.status.isRead === (status === 'read') ? true : false)
    return Promise.resolve(filteredEmails)
 }
-
-// function getUnreadEmailsNum(folderName) {
-
-//     let unreadCounter = 0
-//     return queryByFolder(folderName)
-//         .then(emails => {
-//             emails.forEach(email => {
-//                 if (!email.status.isRead) unreadCounter++
-//             })
-//             return unreadCounter
-//         })
-// }

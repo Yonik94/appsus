@@ -4,7 +4,7 @@ import { eventBus } from '../../../services/event-bus-service.js';
 export default {
     name: 'side-nav',
     template:
-        `<nav class="email-side-nav flex column align-center email-side-nav" :class="{isClose: 'hidden'}">
+        `<nav @click="openCloseHamburger" class="email-side-nav flex column align-center email-side-nav" :class="{isClose: 'hidden'}">
         <button @click="composeEmail" class="compose-email-btn flex align-center mb3" >
         <img class="mr3" src="img/icons/compose.png" alt="">Compose</button>
         <router-link to="/email/inbox" :class="{selectedInbox: routeName === 'inbox'}">
@@ -35,8 +35,8 @@ export default {
             eventBus.$emit('composeEmail')
             this.isDraftOpen = true
         },
-        openCloseNav(status){
-            this.isOpen = !status
+        openCloseHamburger(){
+            this.$emit('changeHamburger')
         }
     },
     created() {

@@ -25,14 +25,11 @@ export default {
     data() {
         return {
             pagePath: '',
-            isHamburgerOpen: false
         }
     },
     methods:{
         openCloseHamburger(){
-            this.isHamburgerOpen = !this.isHamburgerOpen
-            eventBus.$emit('isHumburgerOpen', this.isHamburgerOpen)
-            console.log(this.isHamburgerOpen)
+            this.$emit('changeHamburger')
         }
     },
     created() {
