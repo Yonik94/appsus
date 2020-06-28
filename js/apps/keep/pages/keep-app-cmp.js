@@ -1,7 +1,7 @@
 import { keepService } from '../services/keep-service.js'
 import notesList from '../cmps/notes-list-cmp.js';
 import noteCreate from '../cmps/note-create-cmp.js';
-import  mainHeader  from '../../../cmps/header.js';
+import mainHeader from '../../../cmps/header.js';
 
 export default {
     name: 'keep-app',
@@ -36,11 +36,12 @@ export default {
         // },
         createNote(noteType, inputVal) {
             keepService.createNote(noteType, inputVal)
-                .then(notes => { this.notes = notes });
+                .then(notes => { this.notes = notes })
+                .then(location.reload());
         },
         updateNote(note) {
             keepService.updateNote(note)
-                .then(notes => { this.notes = notes})
+                .then(notes => { this.notes = notes })
         },
         changeFavicon(src) {
             var link = document.createElement('link'),

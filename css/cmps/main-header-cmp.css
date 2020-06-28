@@ -1,7 +1,18 @@
 .main-header {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
-    margin-bottom: 30px;
-    width: 100%;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, .2);
+    border-bottom: 1px solid #eee;
+}
+
+.secondary-logo {
+    font-family: 'Spartan';
+    font-weight: 300;
+    font-size: calc(1rem + 1vw);
+    transition: text-shadow .3s, transform .2s;
+}
+
+.secondary-logo:hover {
+    text-shadow: 2px 2px 3px rgba(0,0,0,.3);
+    transform: skewX(4deg);
 }
 
 .main-header .keep {
@@ -21,7 +32,7 @@
     height: calc(1rem + 1vw);
 }
 .main-header .hamburger{
-    visibility: hidden;
+    display: none;
     align-items: center;
     margin: 0px 10px 0 20px;
     font-size: 25px;
@@ -31,7 +42,7 @@
 
 @media (max-width: 700px) {
     .main-header .hamburger{
-        visibility: visible;
+        display: initial;
     }
 }
 

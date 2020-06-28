@@ -3,14 +3,13 @@
 }
 
 .emails-list .email-subject {
-    flex-basis: 75%;
+    padding-inline-end: 20px;
 }
 
 .emails-list .email-sent-at {
-    text-align: end;
     margin: 0 5px;
-    min-width: 60px;
-
+    min-width: 70px;
+    text-align: end;
 }
 
 .emails-list select {
