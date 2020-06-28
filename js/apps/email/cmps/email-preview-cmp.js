@@ -18,7 +18,6 @@ export default {
                 sentAt: emailService.getEmailSentAt(this.email.sentAt),
                 from: emailService.getSenderName(this.email.from)
             }
-
         }
     },
     methods: {

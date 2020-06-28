@@ -2,8 +2,8 @@
 
 export default {
     template:
-    `<section class="flex note-create-bar">
-        <i v-if="noteType === 'noteTodos'" class="far fa-plus-square"></i>
+    `<section class="note-create-bar flex align-center">
+        <i v-if="noteType === 'noteTodos'" class="fas fa-plus"></i>
         <input v-model="inputVal" @blur="createNote" @keyup.enter="createNote" @enter="createNote"
             :placeholder="placeholder" class="bg-transparent no-border grow" type="text" />
         <button @click="switchNoteType('noteTxt')"><i class="fas fa-paragraph"></i></button>       

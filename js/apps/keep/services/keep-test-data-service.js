@@ -12,16 +12,29 @@ function query() {
 const gNotes = [
     {
         noteId: utilsService.getRandomId(),
+        type: 'noteImg',
+        isPinned: false,
+        title: 'Asi creating a basic layout',
+        info: {
+            imgUrl: 'https://media2.giphy.com/media/13GIgrGdslD9oQ/giphy.gif?cid=ecf05e4730661c732d435cf562023f5ab95b792a87d89032&rid=giphy.gif',
+            txt: ``
+        },
+        style: {
+            backgroundColor: 'rgb(255, 244, 117)',
+        }
+    },
+    {
+        noteId: utilsService.getRandomId(),
         type: 'noteTxt',
         isPinned: false,
         title: 'Important phone numbers',
         info: {
             txt:
                 `mom: 050-1234567
-                dad: 050-7654321`
+            dad: 050-7654321`
         },
         style: {
-            backgroundColor: 'rgb(232, 234, 237)'
+            backgroundColor: 'rgb(232, 234, 237)',
         }
     },
     {
@@ -34,7 +47,7 @@ const gNotes = [
             txt: `it's so cute!`
         },
         style: {
-            backgroundColor: 'rgb(255, 244, 117)'
+            backgroundColor: 'rgb(255, 244, 117)',
         }
     },
     {
@@ -62,7 +75,7 @@ const gNotes = [
             ]
         },
         style: {
-            backgroundColor: 'rgb(204, 255, 144)'
+            backgroundColor: 'rgb(204, 255, 144)',
         },
     },
     {
@@ -74,7 +87,7 @@ const gNotes = [
             videoUrl: 'https://www.youtube.com/embed/Mus_vwhTCq0'
         },
         style: {
-            backgroundColor: 'rgb(174, 203, 250)'
+            backgroundColor: 'rgb(174, 203, 250)',
         }
     },
     {
@@ -87,7 +100,7 @@ const gNotes = [
             txt: `Solved.`
         },
         style: {
-            backgroundColor: 'rgb(215, 174, 251)'
+            backgroundColor: 'rgb(215, 174, 251)',
         }
     },
     // {

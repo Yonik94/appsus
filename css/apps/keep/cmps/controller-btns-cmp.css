@@ -1,37 +1,46 @@
 .controller-btns {
-    padding: 4px;
-    opacity: 0;
-    transition: opacity .3s;
+  padding: 4px;
+  transition: opacity 0.3s;
 }
+
 .controller-btns button {
-    height: 2rem;
-    width: 2rem;
-    padding: 0.5rem;
-    border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  padding: 0.5rem;
+  border-radius: 50%;
 }
 
 .controller-btns button:hover {
-    background-color: rgb(170, 170, 170, .3);
-}
-
-.note:hover .controller-btns {
-    opacity: 1;
+  background-color: rgb(170, 170, 170, 0.3);
 }
 
 .note-colors {
-    width: 5rem;
-    padding: 0.1rem;
-    box-shadow: 0 0 7px rgba(0, 0, 0, .2);
-    border-radius: 3px;
-    top: 1rem;
-    opacity: 0;
-    transition: opacity .1s;
+  width: 7.4rem;
+  padding: 0.3rem;
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  bottom: 1.5rem;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s;
 }
 .note-colors i {
-    font-size: 1rem;
-    margin: 0.1rem;
+  font-size: 1.5rem;
+  margin: 0.1rem;
 }
 
 .note-palette:hover .note-colors {
+  opacity: 1;
+  z-index: initial;
+}
+
+@media (min-width: 992px) {
+  .controller-btns {
+    opacity: 0;
+  }
+
+  .note:hover .controller-btns {
     opacity: 1;
+  }
 }

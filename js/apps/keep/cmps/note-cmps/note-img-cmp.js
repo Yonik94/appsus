@@ -5,7 +5,7 @@ export default {
     template:
         `<div>
             <img style="width:100%" :src="note.info.imgUrl" alt="">
-            <p @blur="updateTxt($event)" @keydown.116="updateTxt($event)" @keydown.enter.prevent contenteditable="true">{{ note.info.txt }}</p>
+            <p @blur="updateTxt($event)" @keydown.116="updateTxt($event)" @keydown.enter.prevent data-ph="Insert text..." contenteditable="true">{{ note.info.txt }}</p>
         </div>`,
     methods: {
         updateTxt(ev) {
