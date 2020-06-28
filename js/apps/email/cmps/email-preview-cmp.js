@@ -10,7 +10,7 @@ export default {
             <img @click.prevent="updateStarredStatus" v-if="!email.status.isStarred" class="star" src="img/icons/star.png" alt="">
             <img @click.prevent="updateStarredStatus" class="star-f" v-else src="img/icons/star-f.png" alt="">
             <div class="email-from">{{ getEmailDetails.from }}</div>
-            <div class="email-subject">{{ email.subject }} - <span class="fw400">{{ email.body }}</span></div>
+            <div class="email-subject">{{ email.subject }} &nbsp;-&nbsp; <span class="fw400 email-body">{{ email.body }}</span></div>
             <div class="email-sent-at">{{ getEmailDetails.sentAt }}</div>
     </li>`,
     data(){

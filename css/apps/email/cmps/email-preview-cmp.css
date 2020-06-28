@@ -2,7 +2,6 @@
     box-shadow: inset 0 -1px 0 0 rgba(100,121,143,0.122);
     padding: 10px 5px;
     width: 100%;
-    justify-content: space-between;
 }
 
 .email-preview:hover{
@@ -14,6 +13,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: #202124;
+}
+
+.email-body {
+    color: #5F6368;
 }
 
 .email-preview .star{
@@ -29,21 +33,19 @@
 
 .email-preview .star-f{
     padding-inline-end: 20px;
-    padding-inline-start: 20px;
+    padding-inline-start: 15px;
     height: 20px;
 }
 
-
-
 .email-preview .email-sent-at{
     font-size: 0.875rem;
+    justify-self: flex-end;
 }
 
 .email-preview .email-from {
-    flex-basis: 6.3%;
-    min-width: 80px;
+    min-width: 140px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding-inline-end: 10px;
+    padding-inline-end: 30px;
 }

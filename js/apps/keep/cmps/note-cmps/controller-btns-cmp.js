@@ -19,8 +19,9 @@ export default {
         deleteNote() {
             this.$emit('deleteNote');
         },
-        duplicateNote() {
+        duplicateNote(update) {
             this.$emit('duplicateNote');
+            console.log(update)
         },
         forward() {
             console.log('Forward note hasn\'t implemented yet');

@@ -10,7 +10,7 @@ export default {
     name: 'emails-list',
     template:
         `<main class="emails-list flex column">
-            <section class="filter-container flex mb5">
+            <section class="filter-container flex mb1">
             <select @change="filterEmails" :ref="'filterEmails'">
             <option value="all">All</option>
             <option value="unread">Unread</option>
