@@ -1,5 +1,9 @@
+.emails-list{
+    overflow: hidden;
+}
+
 .emails-list .email-from {
-    width: 150px;
+    flex-basis: 15%;
     padding-right: 20px;
 }
 
@@ -9,6 +13,9 @@
 
 .emails-list .email-sent-at {
     flex-basis: 10%;
+    text-align: end;
+    padding: 0 15px;
+
 }
 
 .emails-list select {
@@ -16,7 +23,17 @@
     margin-right: 10px;
 }
 
+.emails-list .filter-container{
+    padding: 20px 50px 20px 0;
+}
+
 .emails-list .filter-container .email-search {
-    width: 300px;
+    flex-grow: 1;
+    outline: unset;
+    border: unset;
+    background-color: #f1f3f4;
+    border-radius: 5px;
+    max-width: 600px;
     height: 50px;
+    padding: 20px;
 }

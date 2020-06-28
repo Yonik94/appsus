@@ -14,6 +14,7 @@ export const emailService = {
     updateDraft,
     deleteEmail,
     getEmails,
+    getEmailsbyReadingStatus,
     // getUnreadEmailsNum
 }
 
@@ -163,6 +164,11 @@ function getEmails(ByText, emails) {
             || email.from.toLowerCase().includes(ByText.toLowerCase()))
     })
     return Promise.resolve(emailsByText)
+}
+
+function getEmailsbyReadingStatus(status, emails){
+   const filteredEmails = emails.filter(email => email.status.isRead === (status === 'read') ? true : false)
+   return Promise.resolve(filteredEmails)
 }
 
 // function getUnreadEmailsNum(folderName) {

@@ -8,20 +8,17 @@
 import emailCompose from '../cmps/email-compose-cmp.js';
 import emailSideNav from '../cmps/side-nav-cmp.js';
 import { eventBus } from '../../../services/event-bus-service.js';
+import  mainHeader  from '../../../cmps/header.js';
 
-// Consider decluttering email-folders duplicates using passage of folderType property
-
-// template: header, nav, emails-list, email-compose
-// index.html/email/:folder? (emailApp that renders emailsList by param)
-// index.html/email/inbox/:emailId?
 export default {
     name: 'email-app',
     template:
+    // <header>Insert header component here</header>
         `<main class="flex column">
-            <header>Insert header component here</header>
+            <main-header></main-header>
             <section class="email-main-container flex">
                 <email-side-nav></email-side-nav>
-                <router-view />
+                <router-view class="grow" />
                 <email-compose v-show="isDraftOpen" :open="isDraftOpen"></email-compose>
             </section>
         </main>`,
@@ -31,7 +28,8 @@ export default {
 
     components: {
         emailCompose,
-        emailSideNav
+        emailSideNav,
+        mainHeader
     },
     created() {
         eventBus.$on('composeEmail', () => {

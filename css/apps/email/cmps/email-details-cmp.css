@@ -1,0 +1,11 @@
+.email-details{
+    padding: 0 100px 0 10px;
+}
+
+.email-details .email-subject{
+   padding: 10px 0px ;
+}
+
+.email-details .sender-details{
+    padding: 10px 0;
+}

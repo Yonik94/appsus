@@ -180,6 +180,30 @@ textarea {
   padding: 3em;
 }
 
+.pr1 {
+  padding-inline-end: 0.25em;
+}
+
+.pr2 {
+  padding-inline-end: 0.5em;
+}
+
+.pr3 {
+  padding-inline-end: 0.75em;
+}
+
+.pr4 {
+  padding-inline-end: 1em;
+}
+
+.pr5 {
+  padding-inline-end: 2em;
+}
+
+.pr6 {
+  padding-inline-end: 3em;
+}
+
 .mb1 {
   margin-bottom: 0.25em;
 }
@@ -271,7 +295,7 @@ textarea {
 }
 
 .fw500 {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .fw600 {
