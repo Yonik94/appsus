@@ -65,7 +65,7 @@ export default {
             eventBus.$emit('closeDraft')
             this.updateEmails()
                 .then(() => {
-                    if (this.emailTo === '' && this.emailSubject === '' && this.emailBody === '') {
+                    if (!this.emailTo && !this.emailSubject && !this.emailBody) {
                         emailService.deleteEmail(this.draftId)
                             .then(() => this.draftId = null)
                             .then(() => this.updateEmails())
@@ -73,7 +73,8 @@ export default {
                 })
                 .then(() => {
                     this.clearComposeForm()
-                    this.$router.go(-1)
+                    this.draftId = null
+                    if (this.$route.name === 'drafts') this.$router.push({ name: this.$route.name })
                 })
         },
 
@@ -109,13 +110,14 @@ export default {
     },
 
     created() {
-        eventBus.$on('composeEmail', () => {
-            this.createDraft();
-        });
+        if (!eventBus._events.composeEmail){
+            eventBus.$on('composeEmail', () => {
+                this.createDraft();
+            });
+        }
         if (this.$route.params.emailId) {
             this.draftId = this.$route.params.emailId
             this.emailHeader()
         }
-
-    }
+    },
 }

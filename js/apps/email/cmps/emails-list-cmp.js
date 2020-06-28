@@ -19,12 +19,19 @@ export default {
             <input class="email-search" @input="onSearch()" :ref="'search'" type="text" placeholder="Search mail"/>
             </section>
             <ul v-if="!emailId || $route.name === 'drafts'">
-                <section><i class="fas fa-trash" v-if="selectedEmails.length" @click="deleteSelected()"></i></section>
+                <section>
+                <button  @click="deleteSelected()" v-if="selectedEmails.length">
+                <i class="fas fa-trash"></i>
+                </button>
+                <button @click="changeEmailToUnread" v-if="selectedEmails.length">
+                <i class="fas fa-envelope"></i>
+                </button>
+                </i></section>
                 <router-link v-for="(email, idx) in emails" :key="idx" :to="$route.name + '/' + email.emailId">
                     <email-preview :email="email" @emailSelected="updateSelectedEmails"></email-preview>
                 </router-link>
             </ul>
-            <email-details v-else-if="emailId" :emailId="emailId"></email-details>
+            <email-details @emailRead="updateEmails" @emailDeleted="updateEmails" v-else-if="emailId" :emailId="emailId"></email-details>
             <email-compose v-if="emailId && $route.name === 'drafts'" :emailId="emailId"></email-compose>
             </main>`,
     data() {
@@ -48,6 +55,7 @@ export default {
             this.updateEmails()
         }
     },
+
     methods: {
         updateEmails() {
             return this.emails = emailService.query(this.$route.name)
@@ -56,6 +64,11 @@ export default {
 
         deleteSelected(){
             emailService.deleteEmails(this.selectedEmails)
+            .then(() => {
+                this.updateEmails()
+                this.selectedEmails = []
+                eventBus.$emit('emailsDeleted')
+            })
         },
 
         filterEmails() {
@@ -76,13 +89,21 @@ export default {
         },
 
         updateSelectedEmails(value, emailId) {
-            console.log(emailId)
             if (value === true) this.selectedEmails.push(emailId)
             else {
                 const emailIdx = this.selectedEmails.findIndex(id =>  id === emailId)
                 if (emailIdx !== -1) this.selectedEmails.splice(emailIdx, 1)
             }
-        }
+        },
+
+        changeEmailToUnread(){
+            emailService.emailsUnread(this.selectedEmails)
+            .then(() => {
+                this.updateEmails()
+                this.selectedEmails = []
+                eventBus.$emit('selectedEmailsUnread')
+            })   
+        },
     },
     components: {
         emailPreview,

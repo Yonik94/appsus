@@ -32,6 +32,7 @@ export default {
     methods: {
         composeEmail() {
             if (this.isDraftOpen) return
+            eventBus.$emit('openCompose')
             eventBus.$emit('composeEmail')
             this.isDraftOpen = true
         },

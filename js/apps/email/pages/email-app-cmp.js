@@ -34,7 +34,7 @@ export default {
         mainHeader
     },
     created() {
-        eventBus.$on('composeEmail', () => {
+        eventBus.$on('openCompose', () => {
             this.toggleCompose(true)
         });
         eventBus.$on('closeDraft', () => {
