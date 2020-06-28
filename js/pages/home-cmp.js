@@ -24,7 +24,7 @@ export default {
             </transition>
 
             <transition name="slide-fade">
-            <router-link v-show="pageLoad" to="/about" class="flex column align-center m5 color-white">
+            <router-link v-show="pageLoad" to="/about" class="flex column align-center mb6 color-white">
                 <i class="fas fa-info-circle fa-3x"></i>
                 About
             </router-link>
