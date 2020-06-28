@@ -18,9 +18,9 @@ export default {
                 <i @click="changeNoteColor('#c1be48')" class="fas fa-circle" style="color: #c1be48"></i>
             </div>
             </button>
-            <button @click="duplicateNote"><i class="far fa-clone"></i></button>
-            <button @click="deleteNote"><i class="far fa-trash-alt"></i></button>
-            <button @click="forward"><i class="far fa-share-square"></i></button>
+            <button @click="duplicateNote" title="Duplicate"><i class="far fa-clone"></i></button>
+            <button @click="deleteNote" title="Delete"><i class="far fa-trash-alt"></i></button>
+            <button @click="forward" title="Forward to Email"><i class="far fa-share-square"></i></button>
         </section>`,
     methods: {
         changeNoteColor(color) {
@@ -33,7 +33,7 @@ export default {
             this.$emit('duplicateNote');
         },
         forward() {
-            console.log('forward');
+            console.log('Forward note hasn\'t implemented yet');
         }
     }
 }

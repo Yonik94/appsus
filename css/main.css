@@ -5,6 +5,7 @@
 @import '../lib/fontawesome/css/all.css';
 @import './base.css';
 @import './home.css';
+@import './about.css';
 @import './cmps/main-header-cmp.css';
 
 /* Apps */

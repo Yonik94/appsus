@@ -335,16 +335,8 @@ textarea {
   color: #000;
 }
 
-<<<<<<< HEAD
-.color-grey {
-  color: #999;
-}
-
-.no-border, .border-none {
-=======
 .no-border,
 .border-none {
->>>>>>> 363e910cb1e82751d7ede5809d47cba6d3149df2
   border: none;
 }
 

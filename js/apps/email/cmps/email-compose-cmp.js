@@ -46,7 +46,6 @@ export default {
                 .then(() => this.updateEmails());
         },
         updateEmails() {
-            console.log('update')
             eventBus.$emit('updateEmails');
         },
         closeDraft() {

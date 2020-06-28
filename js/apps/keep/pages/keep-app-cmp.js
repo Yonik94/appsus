@@ -35,13 +35,12 @@ export default {
         //     this.currNote = note;
         // },
         createNote(noteType, inputVal) {
-            console.log(this.noteType, this.inputVal)
             keepService.createNote(noteType, inputVal)
                 .then(notes => { this.notes = notes });
         },
         updateNote(note) {
             keepService.updateNote(note)
-                .then(notes => { this.notes = notes; console.log(this.notes) })
+                .then(notes => { this.notes = notes})
         },
         changeFavicon(src) {
             var link = document.createElement('link'),

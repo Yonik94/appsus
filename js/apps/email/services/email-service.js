@@ -107,7 +107,6 @@ function createEmail(folder = 'sent') {
 function sendEmail(emailId) {
     return getEmailById(emailId)
         .then(email => {
-            console.log(email)
             email.folder = 'sent';
             utilsService.saveToStorage('emails', gEmails);
             if (email.to === 'me@gmail.com') {
@@ -150,7 +149,6 @@ function updateDraft(info, emailId) {
 function deleteEmail(emailId) {
     return Promise.resolve(gEmails.findIndex(email => email.emailId === emailId))
         .then(idx => {
-            console.log(idx);
             gEmails.splice(idx, 1);
             utilsService.saveToStorage('emails', gEmails);
         });
